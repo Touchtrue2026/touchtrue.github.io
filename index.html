@@ -1,51 +1,159 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郑州太初设计有限公司</title>
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-        body{max-width:1100px;margin:0 auto;padding:40px 20px;color:#222;background:#f7f7f7}
-        .hero{text-align:center;margin-bottom:60px;padding:40px 0}
-        .hero h1{font-size:42px;margin-bottom:12px}
-        .hero p{font-size:18px;color:#555}
-        h2{margin:40px 0 20px;font-size:26px}
-        .project{background:#fff;padding:20px;border-radius:10px;margin-bottom:24px;box-shadow:0 2px 8px #00000012}
-        video{width:100%;border-radius:8px;margin-bottom:10px}
-        .project h3{margin:8px 0}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>太初设计 | TouchTrue</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+body{background:#101111;color:#e8e8e8;line-height:1.7}
+/*导航栏*/
+header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:#101111}
+.logo{height:48px}
+.header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
+/*首屏纯色区域，移除背景图片*/
+.hero{width:100vw;height:100vh;background:#101111;display:flex;align-items:flex-end;padding:40px 60px}
+.hero-text{max-width:520px;padding-bottom:60px}
+.hero-text h2{font-size:22px;font-weight:normal;color:#ddd;margin-bottom:8px}
+.hero-text p{color:#aaa;font-size:15px}
+/*通用容器*/
+.container{max-width:1300px;margin:0 auto;padding:80px 40px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-bottom:80px}
+.title{font-size:42px;margin-bottom:24px;font-weight:normal;color:#f1f1f1}
+.desc{color:#bbbbbb;font-size:16px}
+/*轮播图*/
+.slider-wrap{width:100%;overflow:hidden;height:560px;margin:60px 0;border-radius:4px}
+.slider{display:flex;width:500%;height:100%;animation:slide 25s infinite linear}
+.slider-item{width:20%;height:100%}
+.slider-item img{width:100%;height:100%;object-fit:cover}
+@keyframes slide{
+0%{transform:translateX(0)}
+20%{transform:translateX(0)}
+25%{transform:translateX(-20%)}
+45%{transform:translateX(-20%)}
+50%{transform:translateX(-40%)}
+70%{transform:translateX(-40%)}
+75%{transform:translateX(-60%)}
+95%{transform:translateX(-60%)}
+100%{transform:translateX(-80%)}
+}
+/*视频案例网格，3列布局*/
+.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}
+.video-card{background:#282828;border-radius:4px;overflow:hidden}
+.video-card video{width:100%;height:240px;object-fit:cover;border:none}
+.video-card .video-name{padding:14px;font-size:15px;color:#ddd}
+/*图片画廊（剩下50张图片，4列网格）*/
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:3px}
+footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
+/*移动端适配*/
+@media(max-width:900px){
+.row{grid-template-columns:1fr}
+.video-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:repeat(2,1fr)}
+.header-slogan{display:none}
+}
+</style>
 </head>
 <body>
-    <!-- Hero 区域 -->
-    <section class="hero">
-        <h1>郑州太初设计有限公司</h1>
-        <p>以AI技术为核心驱动，以电影级审美为品质标准
-专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
-    </section>
+<!--导航栏-->
+<header>
+<img src="assets/logo.png" alt="太初设计" class="logo">
+<div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
+</header>
 
-    <!-- Portfolio 作品区域 -->
-    <h2>作品集</h2>
-    <div class="project">
-        <video src="assets/videos/3.mp4" controls muted loop preload="metadata"></video>
-        <h3>AI短片作品01</h3>
-        <p>作品简介描述</p>
-    </div>
-    <div class="project">
-        <video src="assets/videos/2.mp4" controls muted loop preload="metadata"></video>
-        <h3>AI短片作品02</h3>
-        <p>作品简介描述</p>
-    </div>
+<!--首屏纯色页面，取消背景图-->
+<section class="hero">
+<div class="hero-text">
+<h2>郑州太初设计有限公司</h2>
+<p>专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
+</div>
+</section>
 
-    <!-- Experience 履历区域 -->
-    <h2>关于我们</h2>
-    <div class="project">
-        <p>郑州太初设计是一支以AI技术为核心驱动力的视觉创意团队，专注于海外精品仿真人全流程制作、高品质广告TVC及企业宣传片创作。
+<div class="container">
+<!--公司简介-->
+<section class="row">
+<div></div>
+<div>
+<h3 class="title">关于我们</h3>
+<p class="desc">
+郑州太初设计是一支以AI技术为核心驱动力的视觉创意团队，专注于海外精品仿真人全流程制作、高品质广告TVC及企业宣传片创作。<br><br>
+团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本方案、美术设定与视觉开发十余年，兼具艺术院校的系统审美训练与一线工业化制作经验。<br><br>
+太初设计以“电影级审美+前沿AI技术”为双引擎，致力于为品牌客户提供具有国际质感、传播效能与艺术价值的视觉内容解决方案。
+</p>
+</div>
+</section>
 
-团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本方案、美术设定与视觉开发十余年，兼具艺术院校的系统审美训练与一线工业化制作经验。
+<!--核心业务-->
+<section class="row">
+<div>
+<h3 class="title">核心业务</h3>
+</div>
+<div class="desc">
+<p>1.海外精品仿真人全流程制作<br>AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生产，适用于品牌代言、虚拟偶像、社媒运营、产品讲解等多场景。<br><br>
+2.高品质广告TVC<br>从创意脚本、分镜设计、美术指导到拍摄执行与后期制作，提供全案视觉服务，服务客户涵盖科技、汽车、运动、美妆等多品类头部品牌。<br><br>
+3.企业宣传片<br>品牌形象片、产品宣传片、企业文化片、招商路演视频等，以电影化叙事与精良制作提升品牌质感。
+</p>
+</div>
+</section>
 
-太初设计以“电影级审美+前沿AI技术”为双引擎，致力于为品牌客户提供具有国际质感、传播效能与艺术价值的视觉内容解决方案。</p>
-    </div>
+<!--5张图片自动轮播区域-->
+<section>
+<h3 class="title">精选图片案例</h3>
+<div class="slider-wrap">
+<div class="slider">
+<div class="slider-item"><img src="assets/slide1.jpg"></div>
+<div class="slider-item"><img src="assets/slide2.jpg"></div>
+<div class="slider-item"><img src="assets/slide3.jpg"></div>
+<div class="slider-item"><img src="assets/slide4.jpg"></div>
+<div class="slider-item"><img src="assets/slide5.jpg"></div>
+<div class="slider-item"><img src="assets/slide1.jpg"></div>
+</div>
+</div>
+</section>
 
+<!--3条视频案例，预留7个位置后续添加-->
+<section style="margin-top:100px">
+<h3 class="title">视频作品案例</h3>
+<div class="video-grid">
+<div class="video-card">
+<video controls preload="none">
+<source src="assets/video/video01.mp4" type="video/mp4">
+</video>
+<div class="video-name">案例作品01</div>
+</div>
+<div class="video-card">
+<video controls preload="none">
+<source src="assets/video/video02.mp4" type="video/mp4">
+</video>
+<div class="video-name">案例作品02</div>
+</div>
+<div class="video-card">
+<video controls preload="none">
+<source src="assets/video/video03.mp4" type="video/mp4">
+</video>
+<div class="video-name">案例作品03</div>
+</div>
+<!--后续增加视频直接复制上面整块卡片即可-->
+</div>
+</section>
+
+<!--剩余50张图片画廊-->
+<section style="margin-top:100px">
+<h3 class="title">全部图片作品集</h3>
+<div class="gallery-grid">
+<img src="assets/gallery/img1.jpg">
+<img src="assets/gallery/img2.jpg">
+<img src="assets/gallery/img3.jpg">
+<img src="assets/gallery/img4.jpg">
+<img src="assets/gallery/img5.jpg">
+</div>
+</section>
+</div>
+
+<!--底部-->
+<footer>
+郑州太初设计有限公司 ©2026 TouchTrue Design
+</footer>
 </body>
 </html>
