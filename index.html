@@ -40,15 +40,10 @@ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex
 /*视频案例网格，3列*/
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
-.video-card video{width:100%;height:240px;object-fit:cover;border:none}
+.video-card iframe{width:100%;height:240px;border:none}
 .video-name{padding:14px;font-size:15px;color:#ddd}
-/*图片画廊4列，全部使用原图尺寸*/
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:16px;
-margin-top:30px;
-}
+/*图片画廊4列，全部使用原图尺寸，无强制裁切*/
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
 .gallery-grid img{
 width:100%;
 object-fit:unset;
@@ -74,7 +69,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <!--首屏纯色页面-->
 <section class="hero">
 <div class="hero-text">
-<h2>郑州太初设计有限公司</h2>
+<h2>郑州太初设计</h2>
 <p>专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
 </div>
 </section>
@@ -95,18 +90,18 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 
 <!--核心业务-->
 <section class="row">
+<div></div>
 <div>
 <h3 class="title">核心业务</h3>
-</div>
-<div class="desc">
-<p>1.海外精品仿真人全流程制作<br>AI数字人、超写实虚拟角色、仿真人形象开发与完整落地，适用于品牌代言、虚拟主播、短视频内容、产品宣传片等场景。<br><br>
+<p class="desc">
+1.海外精品仿真人全流程制作<br>AI数字人、超写实虚拟角色、仿真人形象开发与完整落地，适用于品牌代言、虚拟主播、短视频内容、产品宣传片等场景。<br><br>
 2.高品质广告TVC<br>从创意脚本、分镜设计、美术指导到成片输出，提供一站式影视制作服务，服务科技、汽车、美妆、快消等多个行业品牌。<br><br>
 3.企业宣传片<br>品牌形象片、产品介绍片、企业文化宣传片、招商路演短片，以电影化镜头语言提升品牌质感。
 </p>
 </div>
 </section>
 
-<!--5张图片自动轮播区域-->
+<!--5张图片手动轮播区域-->
 <section>
 <h3 class="title">精选图片案例</h3>
 <div class="slider-wrap">
@@ -121,33 +116,54 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 </section>
 
-<!--3条视频案例，路径assets/videos-->
+<!--10条B站视频作品-->
 <section style="margin-top:100px">
 <h3 class="title">视频作品案例</h3>
 <div class="video-grid">
 <div class="video-card">
-<video controls preload="none">
-<source src="assets/videos/video01.mp4" type="video/mp4">
-</video>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 <div class="video-name">案例作品01</div>
 </div>
 <div class="video-card">
-<video controls preload="none">
-<source src="assets/videos/video02.mp4" type="video/mp4">
-</video>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 <div class="video-name">案例作品02</div>
 </div>
 <div class="video-card">
-<video controls preload="none">
-<source src="assets/videos/video03.mp4" type="video/mp4">
-</video>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
 <div class="video-name">案例作品03</div>
 </div>
-<!--后续新增视频直接复制上面整块卡片即可-->
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品04</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品05</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品06</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品07</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品08</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品09</div>
+</div>
+<div class="video-card">
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<div class="video-name">案例作品10</div>
+</div>
 </div>
 </section>
 
-<!--画廊板块，放入全部50张图片-->
+<!--画廊板块，放入全部50张图片，原图尺寸展示-->
 <section style="margin-top:100px">
 <h3 class="title">精选作品集</h3>
 <div class="gallery-grid">
