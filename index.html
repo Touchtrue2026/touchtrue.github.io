@@ -9,7 +9,7 @@
 body{background:#101111;color:#e8e8e8;line-height:1.7}
 /*导航栏*/
 header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
-.logo{height:72px}
+.logo{height:48px}
 .header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
 
 /*====首屏：弧形轮播放在Hero区域====*/
@@ -65,18 +65,17 @@ padding-bottom:280px;
 
 /*通用容器*/
 .container{max-width:1300px;margin:0 auto;padding:80px 40px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-bottom:80px}
 .title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
 .desc{color:#bbbbbb;font-size:16px}
 
-/*视频案例网格，5列*/
-.video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}
+/*视频案例网格：5列2行排版*/
+.video-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:30px}
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
-.video-card iframe{width:100%;height:240px;border:none}
-.video-name{padding:14px;font-size:15px;color:#ddd}
+.video-card iframe{width:100%;height:200px;border:none}
+.video-name{padding:12px;font-size:14px;color:#ddd}
 
-/*图片画廊5列，全部使用原图尺寸，无强制裁切*/
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+/*图片画廊5列10行，共50张*/
+.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
 .gallery-grid img{
 width:100%;
 object-fit:unset;
@@ -151,7 +150,6 @@ font-size:16px;
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
 /*手机适配*/
 @media(max-width:900px){
-.row{grid-template-columns:1fr}
 .video-grid{grid-template-columns:repeat(2,1fr)}
 .gallery-grid{grid-template-columns:repeat(2,1fr)}
 .movie-list{grid-template-columns:repeat(2,1fr)}
@@ -173,7 +171,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <!--首屏区域：弧形轮播放在这里，文字叠加上方-->
 <section class="hero">
     <div class="hero-text">
-        <h2>郑州太初设计</h2>
+        <h2>郑州太初设计有限公司</h2>
         <p>公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。<br><br>
 教育背景：中央美术学院、北京电影学院、中国传媒大学</p>
     </div>
@@ -195,7 +193,34 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </section>
 
 <div class="container">
-<!--=====院线电影/剧集履历板块=====-->
+<!--1、公司简介-->
+<section>
+<h3 class="title">关于我们</h3>
+<p class="desc">
+郑州太初设计是一支以AI技术为核心驱动力的视觉创意团队，专注于海外精品仿真人全流程制作、高品质广告TVC及企业宣传片创作。<br><br>
+团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本策划、美术设定与视觉落地十余年，兼具成熟的艺术审美与工业化项目执行经验。<br><br>
+太初设计以“电影级审美+前沿AI技术”为双引擎，为品牌打造具备国际质感的视觉传播方案。
+</p>
+</section>
+
+<!--2、核心业务-->
+<section style="margin-top:100px;">
+<h3 class="title">核心业务</h3>
+<p class="desc">
+AI仿真人视频定制、品牌TVC广告、企业宣传片、影视前期概念设计、分镜脚本创作、世界观视觉开发、美术指导、商业视觉创意策划。
+</p>
+</section>
+
+<!--3、团队核心背景-->
+<section style="margin-top:100px;">
+<h3 class="title">团队核心背景</h3>
+<p class="desc">
+公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。<br><br>
+教育背景：中央美术学院、北京电影学院、中国传媒大学
+</p>
+</section>
+
+<!--4、代表项目履历（院线剧集+动画特效电影）-->
 <section style="margin-top:100px;">
 <h3 class="title">院线电影 / 剧集项目履历</h3>
 <p class="desc">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作</p>
@@ -218,7 +243,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 <div class="movie-card">
 <img src="assets/movie/poster05.jpg">
-<p>《凡人修仙传》杨洋</p>
+<p>《循环》刘雅瑟</p>
 </div>
 <div class="movie-card">
 <img src="assets/movie/poster06.jpg">
@@ -246,48 +271,17 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 <div class="movie-card">
 <img src="assets/movie/poster12.jpg">
-<p>《我的奇妙男友2》Mike、虞书欣</p>
+<p>《龙岭摸金》蔡珩、顾璇</p>
 </div>
 </div>
 <br><br>
-<p class="desc">其余参与项目：《黎明之战》《九鼎》《龙岭摸金》《精灵闺蜜》《古剑奇谭·厌火之乱》《古剑奇谭·剑心通明》《龙石密码》《记忆囚笼》《灯下不黑之铜山往事》《神兵特工》《今天不是最后一天》 《循环》</p>
+<p class="desc">其余参与项目：《黎明之战》《九鼎》《我的奇妙男友2》《精灵闺蜜》《古剑奇谭·厌火之乱》《古剑奇谭·剑心通明》《龙石密码》《记忆囚笼》《灯下不黑之铜山往事》《神兵特工》《今天不是最后一天》</p>
 <br><br>
 <h4 style="font-size:24px;color:#eee;margin-bottom:16px;">动画/特效电影</h4>
 <p class="desc">参与世界观架构、视觉开发、概念设计等核心环节：《年兽大作战》坏猴子影业｜《凸变英雄 BABA》绘梦动画｜《魔道祖师》视美影业</p>
 </section>
 
-<!--=====TVC合作品牌LOGO板块=====-->
-<section style="margin-top:100px;">
-<h3 class="title">TVC广告合作品牌</h3>
-<p class="desc">手机科技｜汽车｜运动｜美妆多品类视觉创意服务</p>
-<div class="brand-grid">
-<img src="assets/brand/huawei.png">
-<img src="assets/brand/oppo.png">
-<img src="assets/brand/xiaomi.png">
-<img src="assets/brand/oneplus.png">
-<img src="assets/brand/vivo.png">
-<img src="assets/brand/zte.png">
-
-<img src="assets/brand/greatwall.png">
-<img src="assets/brand/chery.png">
-<img src="assets/brand/beijingauto.png">
-<img src="assets/brand/liauto.png">
-<img src="assets/brand/nio.png">
-<img src="assets/brand/aito.png">
-
-<img src="assets/brand/zekr.png">
-<img src="assets/brand/jetour.png">
-<img src="assets/brand/anta.png">
-<img src="assets/brand/361.png">
-<img src="assets/brand/li-ning.png">
-<img src="assets/brand/xtep.png">
-
-<img src="assets/brand/erke.png">
-<img src="assets/brand/lululemon.png">
-</div>
-</section>
-
-<!--=====服务优势=====-->
+<!--5、服务优势-->
 <section style="margin-top:100px;">
 <h3 class="title">服务优势</h3>
 <div class="advantage-wrap">
@@ -310,7 +304,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 </section>
 
-<!--=====合作模式=====-->
+<!--6、合作模式-->
 <section style="margin-top:100px;">
 <h3 class="title">合作模式</h3>
 <div class="cooperate-text">
@@ -322,7 +316,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 </section>
 
-<!--10条B站视频作品-->
+<!--视频作品案例（5列×2行，10个视频）-->
 <section style="margin-top:100px">
 <h3 class="title">视频作品案例</h3>
 <div class="video-grid">
@@ -369,7 +363,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </div>
 </section>
 
-<!--画廊板块，放入全部50张图片，原图尺寸展示-->
+<!--画廊板块，5列10行，50张图-->
 <section style="margin-top:100px">
 <h3 class="title">精选作品集</h3>
 <div class="gallery-grid">
@@ -425,12 +419,45 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <img src="assets/gallery/img_50.jpg">
 </div>
 </section>
+
+<!--合作品牌（放到网页最后一项）-->
+<section style="margin-top:100px;">
+<h3 class="title">TVC广告合作品牌</h3>
+<p class="desc">手机科技｜汽车｜运动｜美妆多品类视觉创意服务</p>
+<div class="brand-grid">
+<img src="assets/brand/huawei.png">
+<img src="assets/brand/oppo.png">
+<img src="assets/brand/xiaomi.png">
+<img src="assets/brand/oneplus.png">
+<img src="assets/brand/vivo.png">
+<img src="assets/brand/zte.png">
+
+<img src="assets/brand/greatwall.png">
+<img src="assets/brand/chery.png">
+<img src="assets/brand/beijingauto.png">
+<img src="assets/brand/liauto.png">
+<img src="assets/brand/nio.png">
+<img src="assets/brand/aito.png">
+
+<img src="assets/brand/zekr.png">
+<img src="assets/brand/jetour.png">
+<img src="assets/brand/anta.png">
+<img src="assets/brand/361.png">
+<img src="assets/brand/li-ning.png">
+<img src="assets/brand/xtep.png">
+
+<img src="assets/brand/erke.png">
+<img src="assets/brand/lululemon.png">
+</div>
+</section>
 </div>
 
 <!--页脚-->
 <footer>
-  郑州太初设计，以技术为笔，以审美为尺，致力于成为AI时代高品质视觉内容的定义者
-  郑州太初设计有限公司 ©2026 TouchTrue Design
+以技术为笔，以审美为尺，致力于成为AI时代高品质视觉内容的定义者
+    
+郑州太初设计有限公司 ©2026 TouchTrue Design
 </footer>
 </body>
 </html>
+
