@@ -8,46 +8,145 @@
 *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
 body{background:#101111;color:#e8e8e8;line-height:1.7}
 /*导航栏*/
-header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:#101111}
-.logo{height:48px}
+header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
+.logo{height:72px}
 .header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
-/*首屏纯色区域*/
-.hero{width:100vw;height:100vh;background:#101111;display:flex;align-items:flex-end;padding:40px 60px}
-.hero-text{max-width:520px;padding-bottom:60px}
-.hero-text h2{font-size:22px;font-weight:normal;color:#ddd;margin-bottom:8px}
-.hero-text p{color:#aaa;font-size:15px}
+
+/*====首屏：弧形轮播放在Hero区域====*/
+.hero{
+width:100vw;
+height:100vh;
+background:radial-gradient(ellipse at center,#152035,#101111 70%);
+position:relative;
+overflow:hidden;
+display:flex;
+align-items:flex-end;
+padding:40px 60px;
+}
+/*弧形滚动容器铺满首屏底部*/
+.curved-slider-wrap{
+position:absolute;
+left:0;
+bottom:0;
+width:100%;
+overflow:hidden;
+padding:60px 0;
+}
+.curved-track{
+display:flex;
+gap:24px;
+animation:curveScroll 28s linear infinite;
+}
+.curved-item{
+width:340px;
+height:220px;
+border-radius:8px;
+overflow:hidden;
+flex-shrink:0;
+}
+.curved-item img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+@keyframes curveScroll{
+0%{transform:translateX(0)}
+100%{transform:translateX(-50%)}
+}
+/*首屏文字叠加在轮播上方*/
+.hero-text{
+position:relative;
+z-index:2;
+max-width:620px;
+padding-bottom:280px;
+}
+.hero-text h2{font-size:34px;font-weight:normal;color:#f4f4f4;margin-bottom:14px}
+.hero-text p{color:#bbbbbb;font-size:17px;line-height:1.8}
+
 /*通用容器*/
 .container{max-width:1300px;margin:0 auto;padding:80px 40px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-bottom:80px}
 .title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
 .desc{color:#bbbbbb;font-size:16px}
-/*轮播图*/
-.slider-wrap{width:100%;overflow:hidden;height:560px;margin:60px 0;border-radius:4px}
-.slider{display:flex;width:500%;height:100%;animation:slide 25s infinite linear}
-.slider-item{width:20%;height:100%}
-.slider-item img{width:100%;height:100%;object-fit:cover}
-@keyframes slide{
-0%{transform:translateX(0)}
-20%{transform:translateX(0)}
-25%{transform:translateX(-20%)}
-45%{transform:translateX(-20%)}
-50%{transform:translateX(-40%)}
-70%{transform:translateX(-40%)}
-75%{transform:translateX(-60%)}
-95%{transform:translateX(-60%)}
-100%{transform:translateX(-80%)}
-}
-/*视频案例网格，3列*/
+
+/*视频案例网格，5列*/
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:30px}
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
 .video-card iframe{width:100%;height:240px;border:none}
 .video-name{padding:14px;font-size:15px;color:#ddd}
-/*图片画廊4列，全部使用原图尺寸，无强制裁切*/
+
+/*图片画廊5列，全部使用原图尺寸，无强制裁切*/
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
 .gallery-grid img{
 width:100%;
 object-fit:unset;
 border-radius:3px;
+}
+/*=====影视履历板块=====*/
+.movie-list{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:22px;
+margin-top:30px;
+}
+.movie-card{
+background:#1f1f1f;
+border-radius:6px;
+overflow:hidden;
+}
+.movie-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+.movie-card p{
+padding:12px 14px;
+color:#cccccc;
+font-size:14px;
+}
+/*=====合作品牌LOGO区域=====*/
+.brand-grid{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:30px;
+margin-top:30px;
+align-items:center;
+}
+.brand-grid img{
+width:100%;
+max-height:70px;
+object-fit:contain;
+filter:brightness(0.85);
+transition:0.3s;
+}
+.brand-grid img:hover{filter:brightness(1.15)}
+/*服务优势区块*/
+.advantage-wrap{
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:24px;
+}
+.advantage-item{
+background:#1c1c1c;
+padding:24px;
+border-radius:6px;
+}
+.advantage-item h4{
+color:#fff;
+font-size:18px;
+margin-bottom:12px;
+}
+.advantage-item p{
+color:#b8b8b8;
+font-size:15px;
+}
+/*合作模式*/
+.cooperate-text{
+color:#bbbbbb;
+line-height:2;
+margin-top:20px;
+font-size:16px;
 }
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
 /*手机适配*/
@@ -55,7 +154,12 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .row{grid-template-columns:1fr}
 .video-grid{grid-template-columns:repeat(2,1fr)}
 .gallery-grid{grid-template-columns:repeat(2,1fr)}
+.movie-list{grid-template-columns:repeat(2,1fr)}
+.brand-grid{grid-template-columns:repeat(3,1fr)}
+.advantage-wrap{grid-template-columns:1fr}
 .header-slogan{display:none}
+.curved-item{width:260px;height:180px}
+.hero-text h2{font-size:26px}
 }
 </style>
 </head>
@@ -66,53 +170,155 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
 </header>
 
-<!--首屏纯色页面-->
+<!--首屏区域：弧形轮播放在这里，文字叠加上方-->
 <section class="hero">
-<div class="hero-text">
-<h2>郑州太初设计</h2>
-<p>专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
-</div>
+    <div class="hero-text">
+        <h2>郑州太初设计</h2>
+        <p>公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。<br><br>
+教育背景：中央美术学院、北京电影学院、中国传媒大学</p>
+    </div>
+    <div class="curved-slider-wrap">
+        <div class="curved-track">
+            <div class="curved-item"><img src="assets/slide1.jpg"></div>
+            <div class="curved-item"><img src="assets/slide2.jpg"></div>
+            <div class="curved-item"><img src="assets/slide3.jpg"></div>
+            <div class="curved-item"><img src="assets/slide4.jpg"></div>
+            <div class="curved-item"><img src="assets/slide5.jpg"></div>
+            <!--复制一组实现无缝循环，请勿删除-->
+            <div class="curved-item"><img src="assets/slide1.jpg"></div>
+            <div class="curved-item"><img src="assets/slide2.jpg"></div>
+            <div class="curved-item"><img src="assets/slide3.jpg"></div>
+            <div class="curved-item"><img src="assets/slide4.jpg"></div>
+            <div class="curved-item"><img src="assets/slide5.jpg"></div>
+        </div>
+    </div>
 </section>
 
 <div class="container">
-<!--公司简介-->
-<section class="row">
-<div></div>
-<div>
-<h3 class="title">关于我们</h3>
-<p class="desc">
-郑州太初设计是一支以AI技术为核心驱动力的视觉创意团队，专注于海外精品仿真人全流程制作、高品质广告TVC及企业宣传片创作。<br><br>
-团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本策划、美术设定与视觉落地十余年，兼具成熟的艺术审美与工业化项目执行经验。<br><br>
-太初设计以“电影级审美+前沿AI技术”为双引擎，为品牌打造具备国际质感的视觉传播方案。
-</p>
+<!--=====院线电影/剧集履历板块=====-->
+<section style="margin-top:100px;">
+<h3 class="title">院线电影 / 剧集项目履历</h3>
+<p class="desc">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作</p>
+<div class="movie-list">
+<div class="movie-card">
+<img src="assets/movie/poster01.jpg">
+<p>《三国·风起洛阳》黄轩、王一博</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster02.jpg">
+<p>《误杀2》肖央、任达华</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster03.jpg">
+<p>《忠犬八公》冯小刚、陈冲</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster04.jpg">
+<p>《风犬少年的天空》彭昱畅、张婧仪</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster05.jpg">
+<p>《凡人修仙传》杨洋</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster06.jpg">
+<p>《超越》郑恺、李昀锐</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster07.jpg">
+<p>《白夜追凶之重生》张译、赵子琪</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster08.jpg">
+<p>《三体》张鲁一、于和伟</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster09.jpg">
+<p>《悟空传》彭于晏、倪妮</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster10.jpg">
+<p>《烈火英雄》黄晓明、杜江</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster11.jpg">
+<p>《749局》王俊凯、苗苗</p>
+</div>
+<div class="movie-card">
+<img src="assets/movie/poster12.jpg">
+<p>《我的奇妙男友2》Mike、虞书欣</p>
+</div>
+</div>
+<br><br>
+<p class="desc">其余参与项目：《黎明之战》《九鼎》《龙岭摸金》《精灵闺蜜》《古剑奇谭·厌火之乱》《古剑奇谭·剑心通明》《龙石密码》《记忆囚笼》《灯下不黑之铜山往事》《神兵特工》《今天不是最后一天》 《循环》</p>
+<br><br>
+<h4 style="font-size:24px;color:#eee;margin-bottom:16px;">动画/特效电影</h4>
+<p class="desc">参与世界观架构、视觉开发、概念设计等核心环节：《年兽大作战》坏猴子影业｜《凸变英雄 BABA》绘梦动画｜《魔道祖师》视美影业</p>
+</section>
+
+<!--=====TVC合作品牌LOGO板块=====-->
+<section style="margin-top:100px;">
+<h3 class="title">TVC广告合作品牌</h3>
+<p class="desc">手机科技｜汽车｜运动｜美妆多品类视觉创意服务</p>
+<div class="brand-grid">
+<img src="assets/brand/huawei.png">
+<img src="assets/brand/oppo.png">
+<img src="assets/brand/xiaomi.png">
+<img src="assets/brand/oneplus.png">
+<img src="assets/brand/vivo.png">
+<img src="assets/brand/zte.png">
+
+<img src="assets/brand/greatwall.png">
+<img src="assets/brand/chery.png">
+<img src="assets/brand/beijingauto.png">
+<img src="assets/brand/liauto.png">
+<img src="assets/brand/nio.png">
+<img src="assets/brand/aito.png">
+
+<img src="assets/brand/zekr.png">
+<img src="assets/brand/jetour.png">
+<img src="assets/brand/anta.png">
+<img src="assets/brand/361.png">
+<img src="assets/brand/li-ning.png">
+<img src="assets/brand/xtep.png">
+
+<img src="assets/brand/erke.png">
+<img src="assets/brand/lululemon.png">
 </div>
 </section>
 
-<!--核心业务-->
-<section class="row">
-<div></div>
-<div>
-<h3 class="title">核心业务</h3>
-<p class="desc">
-1.海外精品仿真人全流程制作<br>AI数字人、超写实虚拟角色、仿真人形象开发与完整落地，适用于品牌代言、虚拟主播、短视频内容、产品宣传片等场景。<br><br>
-2.高品质广告TVC<br>从创意脚本、分镜设计、美术指导到成片输出，提供一站式影视制作服务，服务科技、汽车、美妆、快消等多个行业品牌。<br><br>
-3.企业宣传片<br>品牌形象片、产品介绍片、企业文化宣传片、招商路演短片，以电影化镜头语言提升品牌质感。
-</p>
+<!--=====服务优势=====-->
+<section style="margin-top:100px;">
+<h3 class="title">服务优势</h3>
+<div class="advantage-wrap">
+<div class="advantage-item">
+<h4>电影级审美基因</h4>
+<p>核心团队来自央美、北电、中传，具备系统的视觉美学训练与一线电影制作经验。</p>
+</div>
+<div class="advantage-item">
+<h4>AI技术深度融合</h4>
+<p>前沿AI生成技术结合传统影视流程，仿真人逼真度、光影质感、叙事节奏达到高水准。</p>
+</div>
+<div class="advantage-item">
+<h4>全流程交付能力</h4>
+<p>创意策划、分镜设计、美术设定、数字制作直至成片交付，一站式完整解决方案。</p>
+</div>
+<div class="advantage-item">
+<h4>头部品牌服务经验</h4>
+<p>长期服务科技、汽车、运动行业头部客户，兼顾艺术表现力与商业市场需求。</p>
+</div>
 </div>
 </section>
 
-<!--5张图片手动轮播区域-->
-<section>
-<h3 class="title">精选图片案例</h3>
-<div class="slider-wrap">
-<div class="slider">
-<div class="slider-item"><img src="assets/slide1.jpg"></div>
-<div class="slider-item"><img src="assets/slide2.jpg"></div>
-<div class="slider-item"><img src="assets/slide3.jpg"></div>
-<div class="slider-item"><img src="assets/slide4.jpg"></div>
-<div class="slider-item"><img src="assets/slide5.jpg"></div>
-<div class="slider-item"><img src="assets/slide1.jpg"></div>
-</div>
+<!--=====合作模式=====-->
+<section style="margin-top:100px;">
+<h3 class="title">合作模式</h3>
+<div class="cooperate-text">
+✅全案委托制作<br>
+✅创意脚本与分镜设计<br>
+✅美术指导与视觉开发<br>
+✅AI仿真人角色定制与内容生产<br>
+✅企业宣传片/品牌TVC定制
 </div>
 </section>
 
@@ -133,31 +339,31 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <div class="video-name">案例作品03</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品04</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品05</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品06</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品07</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品08</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品09</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品10</div>
 </div>
 </div>
@@ -223,7 +429,8 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 
 <!--页脚-->
 <footer>
-郑州太初设计有限公司 ©2026 TouchTrue Design
+  郑州太初设计，以技术为笔，以审美为尺，致力于成为AI时代高品质视觉内容的定义者
+  郑州太初设计有限公司 ©2026 TouchTrue Design
 </footer>
 </body>
 </html>
