@@ -42,9 +42,18 @@ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
 .video-card video{width:100%;height:240px;object-fit:cover;border:none}
 .video-name{padding:14px;font-size:15px;color:#ddd}
-/*图片画廊4列，存放全部50张作品*/
-.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-.gallery-grid img{width:100%;height:260px;object-fit:cover;border-radius:3px}
+/*图片画廊4列，全部使用原图尺寸*/
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-top:30px;
+}
+.gallery-grid img{
+width:100%;
+object-fit:unset;
+border-radius:3px;
+}
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
 /*手机适配*/
 @media(max-width:900px){
