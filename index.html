@@ -105,20 +105,30 @@ font-size:14px;
 }
 /*=====合作品牌LOGO区域=====*/
 .brand-grid{
-display:grid;
-grid-template-columns:repeat(6,1fr);
-gap:30px;
-margin-top:30px;
-align-items:center;
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:30px;
+    margin-top:30px;
+    align-items:center;
 }
-.brand-grid img{
-width:100%;
-max-height:70px;
-object-fit:contain;
-filter:brightness(0.85);
-transition:0.3s;
+.brand-item{
+    height:95px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-.brand-grid img:hover{filter:brightness(1.15)}
+.brand-item img{
+    max-width:82%;
+    max-height:72px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    filter:brightness(0.85);
+    transition:0.3s;
+}
+.brand-item img:hover{
+    filter:brightness(1.15);
+}
 /*服务优势区块*/
 .advantage-wrap{
 margin-top:30px;
