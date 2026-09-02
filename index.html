@@ -178,28 +178,57 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
 </header>
 
-<!--首屏区域：弧形轮播放在这里，文字叠加上方-->
+   <!--弧形无限轮播｜整体水平居中，图片直接放在assets根目录，5张原图无缝循环滚动-->
+<div style="width:85%;margin:0 auto;overflow:hidden;border-radius:12px;">
+  <div class="curve-scroll" style="display:flex;animation:curveScroll 28s linear infinite;">
+    <!--原始5张图片，路径assets/xxx，图片直接放在assets下，不在gallery文件夹-->
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <!--复制5张实现无缝衔接，路径保持一致，不要删除-->
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/img5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    </div>
+  </div>
+</div>
+
+<!--动画CSS，粘贴到<head>中的<style>标签里面-->
+<style>
+@keyframes curveScroll {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(-50%);}
+}
+</style>
+<!--首屏区域：弧形轮播放在这里，文字叠加下方-->
 <section class="hero">
     <div class="hero-text">
         <h2>郑州太初设计</h2>
         <p>专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
     </div>
-    <div class="curved-slider-wrap">
-        <div class="curved-track">
-            <div class="curved-item"><img src="assets/slide1.jpg"></div>
-            <div class="curved-item"><img src="assets/slide2.jpg"></div>
-            <div class="curved-item"><img src="assets/slide3.jpg"></div>
-            <div class="curved-item"><img src="assets/slide4.jpg"></div>
-            <div class="curved-item"><img src="assets/slide5.jpg"></div>
-            <!--复制一组实现无缝循环，请勿删除-->
-            <div class="curved-item"><img src="assets/slide1.jpg"></div>
-            <div class="curved-item"><img src="assets/slide2.jpg"></div>
-            <div class="curved-item"><img src="assets/slide3.jpg"></div>
-            <div class="curved-item"><img src="assets/slide4.jpg"></div>
-            <div class="curved-item"><img src="assets/slide5.jpg"></div>
-        </div>
-    </div>
-</section>
 
 <div class="container">
 <!--1、公司简介-->
