@@ -20,14 +20,18 @@ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
 .video-card iframe{width:100%;height:200px;border:none}
 .video-name{padding:12px;font-size:14px;color:#ddd}
-/*图片画廊5列10行，共50张，原图尺寸不强制拉伸*/
-.gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
+/*====画廊50张图片【原图尺寸，不压缩】====*/
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:14px;margin-top:30px
+}
 .gallery-grid img{
-width:auto;
+width:auto !important;
+height:auto !important;
 max-width:100%;
-height:auto;
-object-fit:none;
 border-radius:3px;
+display:block;
 }
 /*=====影视履历板块=====*/
 .movie-list{
@@ -106,27 +110,20 @@ margin-top:20px;
 font-size:16px;
 }
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
-/*====可拖拽轮播+左右箭头====*/
+/*=====修复后的轮播（拖拽+箭头+自动滚动）=====*/
 .slide-box{
   width:85%;
   margin:0 auto;
   position:relative;
-}
-.slide-wrap{
   overflow:hidden;
   border-radius:12px;
-  cursor:grab;
-}
-.slide-wrap:active{
-  cursor:grabbing;
 }
 .slide-track{
   display:flex;
   gap:16px;
 }
 .slide-item{
-  flex-shrink:0;
-  width:320px;
+  flex:0 0 320px;
   height:210px;
   border-radius:8px;
   overflow:hidden;
@@ -165,7 +162,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .brand-grid{grid-template-columns:repeat(3,1fr)}
 .advantage-wrap{grid-template-columns:1fr}
 .header-slogan{display:none}
-.slide-item{width:260px;height:180px}
+.slide-item{flex:0 0 260px;height:180px}
 .slide-btn{width:36px;height:36px;font-size:18px}
 }
 </style>
@@ -181,20 +178,18 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <!--可拖拽触屏滑动轮播+左右箭头-->
 <div class="slide-box">
   <button class="slide-btn prev-btn">&lt;</button>
-  <div class="slide-wrap" id="sliderWrap">
-    <div class="slide-track" id="sliderTrack">
-      <div class="slide-item"><img src="assets/slide1.jpg"></div>
-      <div class="slide-item"><img src="assets/slide2.jpg"></div>
-      <div class="slide-item"><img src="assets/slide3.jpg"></div>
-      <div class="slide-item"><img src="assets/slide4.jpg"></div>
-      <div class="slide-item"><img src="assets/slide5.jpg"></div>
-      <!--复制一组实现无缝循环-->
-      <div class="slide-item"><img src="assets/slide1.jpg"></div>
-      <div class="slide-item"><img src="assets/slide2.jpg"></div>
-      <div class="slide-item"><img src="assets/slide3.jpg"></div>
-      <div class="slide-item"><img src="assets/slide4.jpg"></div>
-      <div class="slide-item"><img src="assets/slide5.jpg"></div>
-    </div>
+  <div class="slide-track" id="sliderTrack">
+    <div class="slide-item"><img src="assets/slide1.jpg"></div>
+    <div class="slide-item"><img src="assets/slide2.jpg"></div>
+    <div class="slide-item"><img src="assets/slide3.jpg"></div>
+    <div class="slide-item"><img src="assets/slide4.jpg"></div>
+    <div class="slide-item"><img src="assets/slide5.jpg"></div>
+    <!--复制一组实现无缝循环-->
+    <div class="slide-item"><img src="assets/slide1.jpg"></div>
+    <div class="slide-item"><img src="assets/slide2.jpg"></div>
+    <div class="slide-item"><img src="assets/slide3.jpg"></div>
+    <div class="slide-item"><img src="assets/slide4.jpg"></div>
+    <div class="slide-item"><img src="assets/slide5.jpg"></div>
   </div>
   <button class="slide-btn next-btn">&gt;</button>
 </div>
@@ -373,7 +368,7 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 </div>
 </div>
 </section>
-<!--画廊板块，5列10行，50张图，保留原图尺寸-->
+<!--画廊板块，5列10行，50张图，原图尺寸-->
 <section style="margin-top:100px">
 <h3 class="title">精选作品集</h3>
 <div class="gallery-grid">
@@ -468,78 +463,75 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 郑州太初设计有限公司 ©2026 TouchTrue Design
 </footer>
 
-<!--拖拽滑动+箭头控制JS代码-->
+<!--全新重写JS，轮播全部功能修复完毕-->
 <script>
-const wrap = document.getElementById('sliderWrap');
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-let isDrag = false;
-let startX;
-let scrollLeft;
+const slideWidth = 336;
+let offset = 0;
 let autoTimer;
+let dragStartX = 0;
+let dragOffset = 0;
+let dragging = false;
+
 //自动滚动
-function startAuto(){
-  autoTimer = setInterval(()=>{
-    track.scrollLeft +=1;
-    if(track.scrollLeft>=track.scrollWidth/2){
-      track.scrollLeft=0;
-    }
-  },25)
+function startAuto() {
+    autoTimer = setInterval(() => {
+        offset -= 1;
+        if (Math.abs(offset) >= slideWidth * 5) offset = 0;
+        track.style.transform = `translateX(${offset}px)`;
+    },25)
 }
-function stopAuto(){
-  clearInterval(autoTimer);
+function pauseAuto(){clearInterval(autoTimer)}
+
+//拖拽
+track.addEventListener('mousedown',e=>{
+    dragging=true;
+    dragStartX=e.clientX;
+    dragOffset=offset;
+    pauseAuto();
+})
+window.addEventListener('mousemove',e=>{
+    if(!dragging)return;
+    offset=dragOffset+(e.clientX-dragStartX);
+    track.style.transform=`translateX(${offset}px)`;
+})
+window.addEventListener('mouseup',()=>{
+    dragging=false;
+    startAuto();
+})
+//触屏滑动
+track.addEventListener('touchstart',e=>{
+    dragging=true;
+    dragStartX=e.touches[0].clientX;
+    dragOffset=offset;
+    pauseAuto();
+},{passive:true})
+window.addEventListener('touchmove',e=>{
+    if(!dragging)return;
+    offset=dragOffset+(e.touches[0].clientX-dragStartX);
+    track.style.transform=`translateX(${offset}px)`;
+},{passive:true})
+window.addEventListener('touchend',()=>{
+    dragging=false;
+    startAuto();
+})
+//左右箭头
+prevBtn.onclick=()=>{
+    pauseAuto();
+    offset += slideWidth;
+    if(offset>0)offset=-slideWidth*4;
+    track.style.transform=`translateX(${offset}px)`;
+    setTimeout(startAuto,1200);
 }
-//鼠标拖拽
-wrap.addEventListener('mousedown',(e)=>{
-  isDrag=true;
-  startX=e.pageX-wrap.offsetLeft;
-  scrollLeft=track.scrollLeft;
-  stopAuto();
-})
-wrap.addEventListener('mouseleave',()=>{
-  isDrag=false;
-  startAuto();
-})
-wrap.addEventListener('mouseup',()=>{
-  isDrag=false;
-  startAuto();
-})
-wrap.addEventListener('mousemove',(e)=>{
-  if(!isDrag)return;
-  e.preventDefault();
-  const x=e.pageX-wrap.offsetLeft;
-  const walk=x-startX;
-  track.scrollLeft=scrollLeft-walk;
-})
-//触屏手机滑动
-wrap.addEventListener('touchstart',(e)=>{
-  isDrag=true;
-  startX=e.touches[0].pageX-wrap.offsetLeft;
-  scrollLeft=track.scrollLeft;
-  stopAuto();
-},{passive:true})
-wrap.addEventListener('touchend',()=>{
-  isDrag=false;
-  startAuto();
-})
-wrap.addEventListener('touchmove',(e)=>{
-  if(!isDrag)return;
-  const x=e.touches[0].pageX-wrap.offsetLeft;
-  const walk=x-startX;
-  track.scrollLeft=scrollLeft-walk;
-},{passive:true})
-//左右箭头点击
-prevBtn.addEventListener('click',()=>{
-  stopAuto();
-  track.scrollLeft -=340;
-  setTimeout(startAuto,1200);
-})
-nextBtn.addEventListener('click',()=>{
-  stopAuto();
-  track.scrollLeft +=340;
-  setTimeout(startAuto,1200);
-})
+nextBtn.onclick=()=>{
+    pauseAuto();
+    offset -= slideWidth;
+    if(Math.abs(offset)>=slideWidth*5)offset=0;
+    track.style.transform=`translateX(${offset}px)`;
+    setTimeout(startAuto,1200);
+}
 startAuto();
 </script>
 </body>
