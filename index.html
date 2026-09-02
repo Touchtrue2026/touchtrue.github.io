@@ -20,11 +20,13 @@ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
 .video-card iframe{width:100%;height:200px;border:none}
 .video-name{padding:12px;font-size:14px;color:#ddd}
-/*图片画廊5列10行，共50张*/
+/*图片画廊5列10行，共50张，原图尺寸不强制拉伸*/
 .gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
 .gallery-grid img{
-width:100%;
-object-fit:unset;
+width:auto;
+max-width:100%;
+height:auto;
+object-fit:none;
 border-radius:3px;
 }
 /*=====影视履历板块=====*/
@@ -104,10 +106,13 @@ margin-top:20px;
 font-size:16px;
 }
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
-/*====可拖拽轮播样式====*/
-.slide-wrap{
+/*====可拖拽轮播+左右箭头====*/
+.slide-box{
   width:85%;
   margin:0 auto;
+  position:relative;
+}
+.slide-wrap{
   overflow:hidden;
   border-radius:12px;
   cursor:grab;
@@ -131,6 +136,27 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
   height:100%;
   object-fit:cover;
 }
+/*左右箭头按钮*/
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  color:#fff;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  z-index:10;
+  transition:0.25s;
+}
+.slide-btn:hover{
+  background:rgba(255,255,255,0.4);
+}
+.prev-btn{left:12px}
+.next-btn{right:12px}
 /*手机适配*/
 @media(max-width:900px){
 .video-grid{grid-template-columns:repeat(2,1fr)}
@@ -140,6 +166,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .advantage-wrap{grid-template-columns:1fr}
 .header-slogan{display:none}
 .slide-item{width:260px;height:180px}
+.slide-btn{width:36px;height:36px;font-size:18px}
 }
 </style>
 </head>
@@ -151,21 +178,25 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 </header>
 <br><br><br><br><br>
 
-<!--可拖拽触屏滑动轮播-->
-<div class="slide-wrap" id="sliderWrap">
-  <div class="slide-track" id="sliderTrack">
-    <div class="slide-item"><img src="assets/slide1.jpg"></div>
-    <div class="slide-item"><img src="assets/slide2.jpg"></div>
-    <div class="slide-item"><img src="assets/slide3.jpg"></div>
-    <div class="slide-item"><img src="assets/slide4.jpg"></div>
-    <div class="slide-item"><img src="assets/slide5.jpg"></div>
-    <!--复制一组实现无缝循环-->
-    <div class="slide-item"><img src="assets/slide1.jpg"></div>
-    <div class="slide-item"><img src="assets/slide2.jpg"></div>
-    <div class="slide-item"><img src="assets/slide3.jpg"></div>
-    <div class="slide-item"><img src="assets/slide4.jpg"></div>
-    <div class="slide-item"><img src="assets/slide5.jpg"></div>
+<!--可拖拽触屏滑动轮播+左右箭头-->
+<div class="slide-box">
+  <button class="slide-btn prev-btn">&lt;</button>
+  <div class="slide-wrap" id="sliderWrap">
+    <div class="slide-track" id="sliderTrack">
+      <div class="slide-item"><img src="assets/slide1.jpg"></div>
+      <div class="slide-item"><img src="assets/slide2.jpg"></div>
+      <div class="slide-item"><img src="assets/slide3.jpg"></div>
+      <div class="slide-item"><img src="assets/slide4.jpg"></div>
+      <div class="slide-item"><img src="assets/slide5.jpg"></div>
+      <!--复制一组实现无缝循环-->
+      <div class="slide-item"><img src="assets/slide1.jpg"></div>
+      <div class="slide-item"><img src="assets/slide2.jpg"></div>
+      <div class="slide-item"><img src="assets/slide3.jpg"></div>
+      <div class="slide-item"><img src="assets/slide4.jpg"></div>
+      <div class="slide-item"><img src="assets/slide5.jpg"></div>
+    </div>
   </div>
+  <button class="slide-btn next-btn">&gt;</button>
 </div>
 <!--轮播下方两行文字-->
 <div style="width:85%;margin:24px auto 0 auto;color:#ffffff;">
@@ -342,7 +373,7 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 </div>
 </div>
 </section>
-<!--画廊板块，5列10行，50张图-->
+<!--画廊板块，5列10行，50张图，保留原图尺寸-->
 <section style="margin-top:100px">
 <h3 class="title">精选作品集</h3>
 <div class="gallery-grid">
@@ -437,10 +468,12 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 郑州太初设计有限公司 ©2026 TouchTrue Design
 </footer>
 
-<!--拖拽滑动JS代码-->
+<!--拖拽滑动+箭头控制JS代码-->
 <script>
 const wrap = document.getElementById('sliderWrap');
 const track = document.getElementById('sliderTrack');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
 let isDrag = false;
 let startX;
 let scrollLeft;
@@ -457,6 +490,7 @@ function startAuto(){
 function stopAuto(){
   clearInterval(autoTimer);
 }
+//鼠标拖拽
 wrap.addEventListener('mousedown',(e)=>{
   isDrag=true;
   startX=e.pageX-wrap.offsetLeft;
@@ -495,6 +529,17 @@ wrap.addEventListener('touchmove',(e)=>{
   const walk=x-startX;
   track.scrollLeft=scrollLeft-walk;
 },{passive:true})
+//左右箭头点击
+prevBtn.addEventListener('click',()=>{
+  stopAuto();
+  track.scrollLeft -=340;
+  setTimeout(startAuto,1200);
+})
+nextBtn.addEventListener('click',()=>{
+  stopAuto();
+  track.scrollLeft +=340;
+  setTimeout(startAuto,1200);
+})
 startAuto();
 </script>
 </body>
