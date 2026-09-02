@@ -11,69 +11,20 @@ body{background:#101111;color:#e8e8e8;line-height:1.7}
 header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
 .logo{height:72px}
 .header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
-
-/*====首屏：弧形轮播放在Hero区域====*/
-.hero{
-width:100vw;
-height:100vh;
-background:radial-gradient(ellipse at center,#152035,#101111 70%);
-position:relative;
-overflow:hidden;
-display:flex;
-align-items:flex-end;
-padding:40px 60px;
-}
-/*弧形滚动容器铺满首屏底部*/
-.curved-slider-wrap{
-position:absolute;
-left:0;
-bottom:0;
-width:100%;
-overflow:hidden;
-padding:60px 0;
-}
-.curved-track{
-display:flex;
-gap:24px;
-animation:curveScroll 28s linear infinite;
-}
-.curved-item{
-width:340px;
-height:220px;
-border-radius:8px;
-overflow:hidden;
-flex-shrink:0;
-}
-.curved-item img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+/*弧形滚动动画*/
 @keyframes curveScroll{
 0%{transform:translateX(0)}
 100%{transform:translateX(-50%)}
 }
-/*首屏文字叠加在轮播上方*/
-.hero-text{
-position:relative;
-z-index:2;
-max-width:620px;
-padding-bottom:280px;
-}
-.hero-text h2{font-size:34px;font-weight:normal;color:#f4f4f4;margin-bottom:14px}
-.hero-text p{color:#bbbbbb;font-size:17px;line-height:1.8}
-
 /*通用容器*/
 .container{max-width:1300px;margin:0 auto;padding:80px 40px}
 .title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
 .desc{color:#bbbbbb;font-size:16px}
-
 /*视频案例网格：5列2行排版*/
 .video-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:30px}
 .video-card{background:#282828;border-radius:4px;overflow:hidden}
 .video-card iframe{width:100%;height:200px;border:none}
 .video-name{padding:12px;font-size:14px;color:#ddd}
-
 /*图片画廊5列10行，共50张*/
 .gallery-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}
 .gallery-grid img{
@@ -166,8 +117,6 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .brand-grid{grid-template-columns:repeat(3,1fr)}
 .advantage-wrap{grid-template-columns:1fr}
 .header-slogan{display:none}
-.curved-item{width:260px;height:180px}
-.hero-text h2{font-size:26px}
 }
 </style>
 </head>
@@ -177,58 +126,48 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <img src="assets/logo.png" alt="太初设计" class="logo">
 <div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
 </header>
-
-   <!--弧形无限轮播｜整体水平居中，图片直接放在assets根目录，5张原图无缝循环滚动-->
+<br><br><br><br><br>
+<!--【新版弧形无限居中轮播】slide1~slide5，图片直接放在assets目录-->
 <div style="width:85%;margin:0 auto;overflow:hidden;border-radius:12px;">
-  <div class="curve-scroll" style="display:flex;animation:curveScroll 28s linear infinite;">
-    <!--原始5张图片，路径assets/xxx，图片直接放在assets下，不在gallery文件夹-->
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+  <div style="display:flex;animation:curveScroll 28s linear infinite;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <!--复制5张实现无缝衔接，路径保持一致，不要删除-->
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <!--无缝复制一组，请勿删除-->
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
-    <div class="scroll-item" style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/img5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
+      <img src="assets/slide5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
     </div>
   </div>
 </div>
-
-<!--动画CSS，粘贴到<head>中的<style>标签里面-->
-<style>
-@keyframes curveScroll {
-  0% {transform: translateX(0);}
-  100% {transform: translateX(-50%);}
-}
-</style>
-<!--首屏区域：弧形轮播放在这里，文字叠加下方-->
-<section class="hero">
-    <div class="hero-text">
-        <h2>郑州太初设计</h2>
-        <p>专注海外精品仿真人全流程制作 · 高品质广告TVC · 企业宣传片</p>
-    </div>
+<!--轮播下方两行文字，宽度和轮播保持85%对齐-->
+<div style="width:85%;margin:24px auto 0 auto;color:#ffffff;">
+  <h2 style="margin:0 0 8px 0;font-weight:500;font-size:26px;">郑州太初设计</h2>
+  <p style="margin:0;font-size:15px;opacity:0.85;">专注海外精品仿真人全流程制作・高品质广告 TVC・企业宣传片</p>
+</div>
 
 <div class="container">
 <!--1、公司简介-->
@@ -240,22 +179,18 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 太初设计以“电影级审美+前沿AI技术”为双引擎，为品牌打造具备国际质感的视觉传播方案。
 </p>
 </section>
-
 <!--2、核心业务-->
 <section style="margin-top:100px;">
 <h3 class="title">核心业务</h3>
 <p class="desc">
 1. 海外精品仿真人全流程制作
 AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生产，适用于品牌代言、虚拟偶像、社媒运营、产品讲解等多场景。<br><br>
-
 2. 高品质广告TVC
 从创意脚本、分镜设计、美术指导到拍摄执行与后期制作，提供全案视觉服务，服务客户涵盖科技、汽车、运动、美妆等多品类头部品牌。<br><br>
-
 3. 企业宣传片
 品牌形象片、产品宣传片、企业文化片、招商路演视频等，以电影化叙事与精良制作提升品牌质感。
 </p>
 </section>
-
 <!--3、团队核心背景-->
 <section style="margin-top:100px;">
 <h3 class="title">团队核心背景</h3>
@@ -264,7 +199,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 教育背景：中央美术学院、北京电影学院、中国传媒大学
 </p>
 </section>
-
 <!--4、代表项目履历（院线剧集+动画特效电影）-->
 <section style="margin-top:100px;">
 <h3 class="title">院线电影 / 剧集项目履历</h3>
@@ -325,7 +259,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 <h4 style="font-size:24px;color:#eee;margin-bottom:16px;">动画/特效电影</h4>
 <p class="desc">参与世界观架构、视觉开发、概念设计等核心环节：《年兽大作战》坏猴子影业｜《凸变英雄 BABA》绘梦动画｜《魔道祖师》视美影业</p>
 </section>
-
 <!--5、服务优势-->
 <section style="margin-top:100px;">
 <h3 class="title">服务优势</h3>
@@ -348,7 +281,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 </div>
 </div>
 </section>
-
 <!--6、合作模式-->
 <section style="margin-top:100px;">
 <h3 class="title">合作模式</h3>
@@ -360,7 +292,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 ⚪️企业宣传片/品牌TVC定制
 </div>
 </section>
-
 <!--视频作品案例（5列×2行，10个视频）-->
 <section style="margin-top:100px">
 <h3 class="title">视频作品案例</h3>
@@ -407,7 +338,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 </div>
 </div>
 </section>
-
 <!--画廊板块，5列10行，50张图-->
 <section style="margin-top:100px">
 <h3 class="title">精选作品集</h3>
@@ -464,7 +394,6 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 <img src="assets/gallery/img_50.jpg">
 </div>
 </section>
-
 <!--Cooperation Brands-->
 <section style="margin-top: 100px;">
     <h3 class="title">TVC广告合作品牌</h3>
@@ -476,21 +405,18 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
         <div class="brand-item"><img src="assets/brand/oneplus.png"></div>
         <div class="brand-item"><img src="assets/brand/vivo.png"></div>
         <div class="brand-item"><img src="assets/brand/zte.png"></div>
-
         <div class="brand-item"><img src="assets/brand/greatwall.png"></div>
         <div class="brand-item"><img src="assets/brand/chery.png"></div>
         <div class="brand-item"><img src="assets/brand/beijingauto.png"></div>
         <div class="brand-item"><img src="assets/brand/liauto.png"></div>
         <div class="brand-item"><img src="assets/brand/nio.png"></div>
         <div class="brand-item"><img src="assets/brand/aito.png"></div>
-
         <div class="brand-item"><img src="assets/brand/zekr.png"></div>
         <div class="brand-item"><img src="assets/brand/jetour.png"></div>
         <div class="brand-item"><img src="assets/brand/anta.png"></div>
         <div class="brand-item"><img src="assets/brand/361.png"></div>
         <div class="brand-item"><img src="assets/brand/li-ning.png"></div>
         <div class="brand-item"><img src="assets/brand/xtep.png"></div>
-
         <div class="brand-item"><img src="assets/brand/erke.png"></div>
         <div class="brand-item"><img src="assets/brand/lululemon.png"></div>
         <div class="brand-item"></div>
@@ -499,9 +425,7 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
         <div class="brand-item"></div>
     </div>
 </section>
-
-
-
+</div>
 <!--页脚-->
 <footer>
 以技术为笔，以审美为尺，致力于成为AI时代高品质视觉内容的定义者<br><br>
