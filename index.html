@@ -11,11 +11,6 @@ body{background:#101111;color:#e8e8e8;line-height:1.7}
 header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
 .logo{height:72px}
 .header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
-/*弧形滚动动画*/
-@keyframes curveScroll{
-0%{transform:translateX(0)}
-100%{transform:translateX(-50%)}
-}
 /*通用容器*/
 .container{max-width:1300px;margin:0 auto;padding:80px 40px}
 .title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
@@ -109,6 +104,33 @@ margin-top:20px;
 font-size:16px;
 }
 footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
+/*====可拖拽轮播样式====*/
+.slide-wrap{
+  width:85%;
+  margin:0 auto;
+  overflow:hidden;
+  border-radius:12px;
+  cursor:grab;
+}
+.slide-wrap:active{
+  cursor:grabbing;
+}
+.slide-track{
+  display:flex;
+  gap:16px;
+}
+.slide-item{
+  flex-shrink:0;
+  width:320px;
+  height:210px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.slide-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 /*手机适配*/
 @media(max-width:900px){
 .video-grid{grid-template-columns:repeat(2,1fr)}
@@ -117,6 +139,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .brand-grid{grid-template-columns:repeat(3,1fr)}
 .advantage-wrap{grid-template-columns:1fr}
 .header-slogan{display:none}
+.slide-item{width:260px;height:180px}
 }
 </style>
 </head>
@@ -127,43 +150,24 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 <div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
 </header>
 <br><br><br><br><br>
-<!--【新版弧形无限居中轮播】slide1~slide5，图片直接放在assets目录-->
-<div style="width:85%;margin:0 auto;overflow:hidden;border-radius:12px;">
-  <div style="display:flex;animation:curveScroll 28s linear infinite;">
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <!--无缝复制一组，请勿删除-->
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide1.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide2.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide3.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide4.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
-    <div style="flex-shrink:0;width:320px;height:210px;padding:0 8px;">
-      <img src="assets/slide5.jpg" style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-    </div>
+
+<!--可拖拽触屏滑动轮播-->
+<div class="slide-wrap" id="sliderWrap">
+  <div class="slide-track" id="sliderTrack">
+    <div class="slide-item"><img src="assets/slide1.jpg"></div>
+    <div class="slide-item"><img src="assets/slide2.jpg"></div>
+    <div class="slide-item"><img src="assets/slide3.jpg"></div>
+    <div class="slide-item"><img src="assets/slide4.jpg"></div>
+    <div class="slide-item"><img src="assets/slide5.jpg"></div>
+    <!--复制一组实现无缝循环-->
+    <div class="slide-item"><img src="assets/slide1.jpg"></div>
+    <div class="slide-item"><img src="assets/slide2.jpg"></div>
+    <div class="slide-item"><img src="assets/slide3.jpg"></div>
+    <div class="slide-item"><img src="assets/slide4.jpg"></div>
+    <div class="slide-item"><img src="assets/slide5.jpg"></div>
   </div>
 </div>
-<!--轮播下方两行文字，宽度和轮播保持85%对齐-->
+<!--轮播下方两行文字-->
 <div style="width:85%;margin:24px auto 0 auto;color:#ffffff;">
   <h2 style="margin:0 0 8px 0;font-weight:500;font-size:26px;">郑州太初设计</h2>
   <p style="margin:0;font-size:15px;opacity:0.85;">专注海外精品仿真人全流程制作・高品质广告 TVC・企业宣传片</p>
@@ -301,11 +305,11 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 <div class="video-name">案例作品01</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品02</div>
 </div>
 <div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
 <div class="video-name">案例作品03</div>
 </div>
 <div class="video-card">
@@ -432,6 +436,66 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
     
 郑州太初设计有限公司 ©2026 TouchTrue Design
 </footer>
+
+<!--拖拽滑动JS代码-->
+<script>
+const wrap = document.getElementById('sliderWrap');
+const track = document.getElementById('sliderTrack');
+let isDrag = false;
+let startX;
+let scrollLeft;
+let autoTimer;
+//自动滚动
+function startAuto(){
+  autoTimer = setInterval(()=>{
+    track.scrollLeft +=1;
+    if(track.scrollLeft>=track.scrollWidth/2){
+      track.scrollLeft=0;
+    }
+  },25)
+}
+function stopAuto(){
+  clearInterval(autoTimer);
+}
+wrap.addEventListener('mousedown',(e)=>{
+  isDrag=true;
+  startX=e.pageX-wrap.offsetLeft;
+  scrollLeft=track.scrollLeft;
+  stopAuto();
+})
+wrap.addEventListener('mouseleave',()=>{
+  isDrag=false;
+  startAuto();
+})
+wrap.addEventListener('mouseup',()=>{
+  isDrag=false;
+  startAuto();
+})
+wrap.addEventListener('mousemove',(e)=>{
+  if(!isDrag)return;
+  e.preventDefault();
+  const x=e.pageX-wrap.offsetLeft;
+  const walk=x-startX;
+  track.scrollLeft=scrollLeft-walk;
+})
+//触屏手机滑动
+wrap.addEventListener('touchstart',(e)=>{
+  isDrag=true;
+  startX=e.touches[0].pageX-wrap.offsetLeft;
+  scrollLeft=track.scrollLeft;
+  stopAuto();
+},{passive:true})
+wrap.addEventListener('touchend',()=>{
+  isDrag=false;
+  startAuto();
+})
+wrap.addEventListener('touchmove',(e)=>{
+  if(!isDrag)return;
+  const x=e.touches[0].pageX-wrap.offsetLeft;
+  const walk=x-startX;
+  track.scrollLeft=scrollLeft-walk;
+},{passive:true})
+startAuto();
+</script>
 </body>
 </html>
-
