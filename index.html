@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
         body {
-            /* 新增背景图，背景色#101111作为兜底 */
+            /* 背景图，兜底底色 #101111 */
             background: #101111 url("assets/bg.jpg") center center;
             background-size: cover;
             background-attachment: fixed;
@@ -19,7 +19,7 @@
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
         }
-        /* 增加一层半透明遮罩，防止背景图太亮影响文字阅读 */
+        /* 半透明遮罩，保证文字可读性 */
         .page-mask{
             position: fixed;
             inset:0;
@@ -46,7 +46,7 @@
             color: #cccccc;
         }
 
-        /* 首屏弧形轮播 */
+        /* 首屏弧形轮播，保留原有滑动交互 */
         .hero-slider-wrap {
             position: relative;
             width: 100%;
@@ -154,12 +154,12 @@
 <body>
     <!-- 页面背景遮罩 -->
     <div class="page-mask"></div>
-    <!-- 首屏弧形轮播，原有5张 + 新增7张，一共12张 -->
+    <!-- 首屏弧形轮播，原有5张 + 新增7张，一共12张，保留拖拽滑动+自动滚动+箭头 -->
     <section class="hero-slider-wrap">
         <button class="slider-btn prev-btn">&lt;</button>
         <div class="slider-track-wrap">
             <div id="sliderTrack">
-                <!-- 原有5张 -->
+                <!-- 原有5张轮播图 -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
@@ -173,7 +173,7 @@
                 <div class="slide-item"><img src="assets/img10.jpg"></div>
                 <div class="slide-item"><img src="assets/img11.jpg"></div>
                 <div class="slide-item"><img src="assets/img12.jpg"></div>
-                <!-- 复制全部12张，实现无缝无限滚动 -->
+                <!-- 复制全部12张实现无缝无限滚动 -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
@@ -243,7 +243,6 @@
         <section id="gallery">
             <h2>精选作品集</h2>
             <div class="gallery-grid">
-                <!-- 示例，后续自行填充gallery文件夹图片 assets/gallery/xxx.jpg -->
                 <div class="gallery-item"><img src="assets/gallery/img01.jpg"></div>
                 <div class="gallery-item"><img src="assets/gallery/img02.jpg"></div>
                 <div class="gallery-item"><img src="assets/gallery/img03.jpg"></div>
@@ -339,7 +338,6 @@
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-// 修改轮播宽度，图片总数更新为12张
 const slideWidth = 336;
 let offset = 0;
 let autoTimer;
@@ -351,14 +349,13 @@ let dragging = false;
 function startAuto() {
     autoTimer = setInterval(() => {
         offset -= 1;
-        // 这里修改判断条件，12张图片
         if (Math.abs(offset) >= slideWidth * 12) offset = 0;
         track.style.transform = `translateX(${offset}px)`;
     },50)
 }
 function pauseAuto(){clearInterval(autoTimer)}
 
-//鼠标拖拽
+//鼠标拖拽滑动（保留原有可滑动逻辑）
 track.addEventListener('mousedown',e=>{
     dragging=true;
     dragStartX=e.clientX;
@@ -374,7 +371,7 @@ window.addEventListener('mouseup',()=>{
     dragging=false;
     startAuto();
 })
-//触屏滑动
+//手机触屏滑动（保留原有触屏滑动）
 track.addEventListener('touchstart',e=>{
     dragging=true;
     dragStartX=e.touches[0].clientX;
