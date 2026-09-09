@@ -11,7 +11,6 @@
             box-sizing: border-box;
         }
         body {
-            /* 新增网页背景图，底色#101111兜底 */
             background: #101111 url("assets/bg.jpg") center center / cover no-repeat fixed;
             color: #ffffff;
             font-family: system-ui, -apple-system, sans-serif;
@@ -37,7 +36,6 @@
             color: #cccccc;
         }
 
-        /* 首屏弧形轮播，支持拖拽、触屏滑动、箭头、自动滚动 */
         .hero-slider-wrap {
             position: relative;
             width: 100%;
@@ -78,7 +76,6 @@
         }
         .prev-btn { left: 24px; }
         .next-btn { right:24px; }
-        /* 轮播下方 太初文化标题文字 */
         .hero-title{
             text-align:center;
             font-size:42px;
@@ -86,7 +83,6 @@
             letter-spacing:4px;
         }
 
-        /* 院线电影项目列表 */
         .project-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -109,7 +105,6 @@
             display:block;
         }
 
-        /* 视频案例 5列2行 */
         .video-grid{
             display:grid;
             grid-template-columns: repeat(5,1fr);
@@ -125,7 +120,6 @@
             border:none;
         }
 
-        /* 精选作品集5列10行，图片保持原尺寸 */
         .gallery-grid{
             display:grid;
             grid-template-columns: repeat(5,1fr);
@@ -137,7 +131,6 @@
             display:block;
         }
 
-        /* 合作品牌 保持原有排版 */
         .brand-grid{
             display:grid;
             grid-template-columns: repeat(5,1fr);
@@ -154,7 +147,6 @@
             object-fit:contain;
         }
 
-        /* 文本板块 */
         .text-block{
             margin-bottom:20px;
         }
@@ -165,18 +157,17 @@
     </style>
 </head>
 <body>
-    <!-- 首屏弧形轮播，原有5张 + 新增7张，合计12张，assets根目录 -->
+    <!-- 首屏弧形轮播 -->
     <section class="hero-slider-wrap">
         <button class="slider-btn prev-btn">&lt;</button>
         <div class="slider-track-wrap">
             <div id="sliderTrack">
-                <!-- 原始5张轮播图 -->
+                <!-- 12张轮播图 -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
                 <div class="slide-item"><img src="assets/img4.jpg"></div>
                 <div class="slide-item"><img src="assets/img5.jpg"></div>
-                <!-- 新增7张轮播图片 -->
                 <div class="slide-item"><img src="assets/img6.jpg"></div>
                 <div class="slide-item"><img src="assets/img7.jpg"></div>
                 <div class="slide-item"><img src="assets/img8.jpg"></div>
@@ -184,7 +175,7 @@
                 <div class="slide-item"><img src="assets/img10.jpg"></div>
                 <div class="slide-item"><img src="assets/img11.jpg"></div>
                 <div class="slide-item"><img src="assets/img12.jpg"></div>
-                <!-- 复制全部12张，实现无缝无限滚动 -->
+                <!-- 复制12张实现无缝滚动 -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
@@ -200,7 +191,6 @@
             </div>
         </div>
         <button class="slider-btn next-btn">&gt;</button>
-        <!-- 轮播下方 太初文化文字 -->
         <div class="hero-title">太初文化</div>
     </section>
 
@@ -224,7 +214,7 @@
                 <p>团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本方案、美术设定与视觉开发十余年，兼具艺术院校的系统审美训练与一线工业化制作经验。</p>
             </div>
             <div class="text-block">
-                <p>太初设计以“电影级审美+前沿AI技术”为双引擎，致力于为品牌客户提供具有国际质感、传播效能与艺术价值的视觉内容解决方案。</p>
+                <p>太初设计以"电影级审美+前沿AI技术"为双引擎，致力于为品牌客户提供具有国际质感、传播效能与艺术价值的视觉内容解决方案。</p>
             </div>
         </section>
 
@@ -232,20 +222,20 @@
         <section id="film-project">
             <h2>院线电影/剧集</h2>
             <p class="text-block">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作：</p>
-            <!--12张电影海报-->
+            <!-- 12张电影海报 → 修正为 assets/movie/posterXX.jpg -->
             <div class="poster-grid">
-                <div class="poster-item"><img src="assets/poster/p01.jpg" alt="三国·风起洛阳"></div>
-                <div class="poster-item"><img src="assets/poster/p02.jpg" alt="误杀2"></div>
-                <div class="poster-item"><img src="assets/poster/p03.jpg" alt="忠犬八公"></div>
-                <div class="poster-item"><img src="assets/poster/p04.jpg" alt="风犬少年的天空"></div>
-                <div class="poster-item"><img src="assets/poster/p05.jpg" alt="循环"></div>
-                <div class="poster-item"><img src="assets/poster/p06.jpg" alt="超越"></div>
-                <div class="poster-item"><img src="assets/poster/p07.jpg" alt="白夜追凶之重生"></div>
-                <div class="poster-item"><img src="assets/poster/p08.jpg" alt="三体"></div>
-                <div class="poster-item"><img src="assets/poster/p09.jpg" alt="悟空传"></div>
-                <div class="poster-item"><img src="assets/poster/p10.jpg" alt="烈火英雄"></div>
-                <div class="poster-item"><img src="assets/poster/p11.jpg" alt="749局"></div>
-                <div class="poster-item"><img src="assets/poster/p12.jpg" alt="龙岭摸金"></div>
+                <div class="poster-item"><img src="assets/movie/poster01.jpg" alt="三国·风起洛阳"></div>
+                <div class="poster-item"><img src="assets/movie/poster02.jpg" alt="误杀2"></div>
+                <div class="poster-item"><img src="assets/movie/poster03.jpg" alt="忠犬八公"></div>
+                <div class="poster-item"><img src="assets/movie/poster04.jpg" alt="风犬少年的天空"></div>
+                <div class="poster-item"><img src="assets/movie/poster05.jpg" alt="循环"></div>
+                <div class="poster-item"><img src="assets/movie/poster06.jpg" alt="超越"></div>
+                <div class="poster-item"><img src="assets/movie/poster07.jpg" alt="白夜追凶之重生"></div>
+                <div class="poster-item"><img src="assets/movie/poster08.jpg" alt="三体"></div>
+                <div class="poster-item"><img src="assets/movie/poster09.jpg" alt="悟空传"></div>
+                <div class="poster-item"><img src="assets/movie/poster10.jpg" alt="烈火英雄"></div>
+                <div class="poster-item"><img src="assets/movie/poster11.jpg" alt="749局"></div>
+                <div class="poster-item"><img src="assets/movie/poster12.jpg" alt="龙岭摸金"></div>
             </div>
             <div class="project-list" style="margin:24px 0;">
                 <div class="project-item">《三国·风起洛阳》黄轩、王一博</div>
@@ -265,111 +255,85 @@
             <p class="text-block"><strong>参与世界观架构、视觉开发、概念设计等核心环节：</strong>《年兽大作战》坏猴子影业｜《凸变英雄 BABA》绘梦动画｜《魔道祖师》视美影业</p>
         </section>
 
-        <!--视频作品案例（5列×2行，10个视频）-->
-<section style="margin-top:100px">
-<h3 class="title">视频作品案例</h3>
-<div class="video-grid">
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-<div class="video-name">案例作品01</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品02</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品03</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品04</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品05</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品06</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品07</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品08</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品09</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品10</div>
-</div>
-</div>
-</section>
-
-        <!--5.精选作品集 5列10行，原图尺寸，gallery文件夹内50张图片-->
-        <section id="gallery">
-            <h2>精选作品集</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="assets/gallery/img01.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img02.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img03.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img04.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img05.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img06.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img07.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img08.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img09.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img10.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img11.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img12.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img13.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img14.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img15.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img16.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img17.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img18.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img19.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img20.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img21.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img22.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img23.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img24.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img25.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img26.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img27.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img28.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img29.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img30.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img31.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img32.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img33.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img34.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img35.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img36.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img37.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img38.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img39.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img40.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img41.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img42.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img43.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img44.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img45.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img46.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img47.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img48.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img49.jpg"></div>
-                <div class="gallery-item"><img src="assets/gallery/img50.jpg"></div>
+        <!--4.视频作品案例-->
+        <section id="video-case">
+            <h2>视频作品案例</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-card">
+                    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
             </div>
         </section>
 
-        <!--6.TVC广告合作品牌-->
+        <!--5.精选作品集 5列10行 → 修正为 img_XX.jpg -->
+        <section id="gallery">
+            <h2>精选作品集</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="assets/gallery/img_01.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_02.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_03.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_04.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_05.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_06.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_07.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_08.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_09.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_10.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_11.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_12.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_13.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_14.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_15.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_16.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_17.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_18.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_19.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_20.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_21.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_22.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_23.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_24.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_25.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_26.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_27.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_28.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_29.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_30.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_31.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_32.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_33.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_34.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_35.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_36.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_37.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_38.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_39.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_40.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_41.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_42.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_43.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_44.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_45.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_46.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_47.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_48.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_49.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img_50.jpg"></div>
+            </div>
+        </section>
+
+        <!--6.TVC广告合作品牌 → 修正为实际存在的品牌图片 -->
         <section id="brand">
             <h2>TVC广告合作品牌</h2>
             <div class="text-block">
@@ -380,10 +344,10 @@
             </div>
             <div class="brand-grid" style="margin-top:32px;">
                 <div class="brand-item"><img src="assets/brands/anta.png" alt="安踏"></div>
-                <div class="brand-item"><img src="assets/brands/brand2.png"></div>
-                <div class="brand-item"><img src="assets/brands/brand3.png"></div>
-                <div class="brand-item"><img src="assets/brands/brand4.png"></div>
-                <div class="brand-item"><img src="assets/brands/brand5.png"></div>
+                <div class="brand-item"><img src="assets/brands/361.png" alt="361°"></div>
+                <div class="brand-item"><img src="assets/brands/nio.png" alt="蔚来"></div>
+                <div class="brand-item"><img src="assets/brands/xiaomi.png" alt="小米"></div>
+                <div class="brand-item"><img src="assets/brands/huawei.png" alt="华为"></div>
             </div>
         </section>
 
@@ -449,7 +413,6 @@ let dragStartX = 0;
 let dragOffset = 0;
 let dragging = false;
 
-//自动滚动
 function startAuto() {
     autoTimer = setInterval(() => {
         offset -= 1;
@@ -459,7 +422,6 @@ function startAuto() {
 }
 function pauseAuto(){clearInterval(autoTimer)}
 
-//鼠标拖拽滑动
 track.addEventListener('mousedown',e=>{
     dragging=true;
     dragStartX=e.clientX;
@@ -475,7 +437,6 @@ window.addEventListener('mouseup',()=>{
     dragging=false;
     startAuto();
 })
-//触屏滑动
 track.addEventListener('touchstart',e=>{
     dragging=true;
     dragStartX=e.touches[0].clientX;
@@ -491,7 +452,6 @@ window.addEventListener('touchend',()=>{
     dragging=false;
     startAuto();
 })
-//左右箭头点击事件
 prevBtn.onclick=()=>{
     pauseAuto();
     offset += slideWidth;
