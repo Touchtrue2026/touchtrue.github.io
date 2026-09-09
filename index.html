@@ -1,473 +1,345 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>太初设计 | TouchTrue</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
-body{background:#101111;color:#e8e8e8;line-height:1.7}
-/*导航栏*/
-header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
-.logo{height:72px}
-.header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
-/*通用容器*/
-.container{max-width:1300px;margin:0 auto;padding:80px 40px}
-.title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
-.desc{color:#bbbbbb;font-size:16px}
-/*视频案例网格：5列2行排版*/
-.video-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:30px}
-.video-card{background:#282828;border-radius:4px;overflow:hidden}
-.video-card iframe{width:100%;height:200px;border:none}
-.video-name{padding:12px;font-size:14px;color:#ddd}
-/*====画廊50张图片【原图尺寸，不压缩】====*/
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:14px;margin-top:30px
-}
-.gallery-grid img{
-width:auto !important;
-height:auto !important;
-max-width:100%;
-border-radius:3px;
-display:block;
-}
-/*=====影视履历板块=====*/
-.movie-list{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:22px;
-margin-top:30px;
-}
-.movie-card{
-background:#1f1f1f;
-border-radius:6px;
-overflow:hidden;
-}
-.movie-card img{
-width:100%;
-height:260px;
-object-fit:cover;
-}
-.movie-card p{
-padding:12px 14px;
-color:#cccccc;
-font-size:14px;
-}
-/*=====合作品牌LOGO区域=====*/
-.brand-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:30px;
-    margin-top:30px;
-    align-items:center;
-}
-.brand-item{
-    height:95px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
-.brand-item img{
-    max-width:82%;
-    max-height:72px;
-    width:auto;
-    height:auto;
-    object-fit:contain;
-    filter:brightness(0.85);
-    transition:0.3s;
-}
-.brand-item img:hover{
-    filter:brightness(1.15);
-}
-/*服务优势区块*/
-.advantage-wrap{
-margin-top:30px;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:24px;
-}
-.advantage-item{
-background:#1c1c1c;
-padding:24px;
-border-radius:6px;
-}
-.advantage-item h4{
-color:#fff;
-font-size:18px;
-margin-bottom:12px;
-}
-.advantage-item p{
-color:#b8b8b8;
-font-size:15px;
-}
-/*合作模式*/
-.cooperate-text{
-color:#bbbbbb;
-line-height:2;
-margin-top:20px;
-font-size:16px;
-}
-footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
-/*=====修复后的轮播（拖拽+箭头+自动滚动）=====*/
-.slide-box{
-  width:85%;
-  margin:0 auto;
-  position:relative;
-  overflow:hidden;
-  border-radius:12px;
-}
-.slide-track{
-  display:flex;
-  gap:16px;
-}
-.slide-item{
-  flex:0 0 320px;
-  height:210px;
-  border-radius:8px;
-  overflow:hidden;
-}
-.slide-item img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-/*左右箭头按钮*/
-.slide-btn{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.18);
-  color:#fff;
-  border:none;
-  font-size:22px;
-  cursor:pointer;
-  z-index:10;
-  transition:0.25s;
-}
-.slide-btn:hover{
-  background:rgba(255,255,255,0.4);
-}
-.prev-btn{left:12px}
-.next-btn{right:12px}
-/*手机适配*/
-@media(max-width:900px){
-.video-grid{grid-template-columns:repeat(2,1fr)}
-.gallery-grid{grid-template-columns:repeat(2,1fr)}
-.movie-list{grid-template-columns:repeat(2,1fr)}
-.brand-grid{grid-template-columns:repeat(3,1fr)}
-.advantage-wrap{grid-template-columns:1fr}
-.header-slogan{display:none}
-.slide-item{flex:0 0 260px;height:180px}
-.slide-btn{width:36px;height:36px;font-size:18px}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太初文化</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            /* 新增背景图，背景色#101111作为兜底 */
+            background: #101111 url("assets/bg.jpg") center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
+            font-family: system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+        /* 增加一层半透明遮罩，防止背景图太亮影响文字阅读 */
+        .page-mask{
+            position: fixed;
+            inset:0;
+            background-color: rgba(16,17,17,0.85);
+            z-index:-1;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        section {
+            padding: 80px 0;
+        }
+        h2 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            font-weight: 500;
+            border-left: 4px solid #fff;
+            padding-left: 16px;
+        }
+        p {
+            font-size: 16px;
+            color: #cccccc;
+        }
+
+        /* 首屏弧形轮播 */
+        .hero-slider-wrap {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            padding: 60px 0;
+        }
+        .slider-track-wrap {
+            overflow: hidden;
+            width: 100%;
+        }
+        #sliderTrack {
+            display: flex;
+            gap: 24px;
+        }
+        .slide-item {
+            flex-shrink: 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .slide-item img {
+            display: block;
+            height: 360px;
+            object-fit: cover;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            background: rgba(16,17,17,0.6);
+            color:#fff;
+            font-size:22px;
+            cursor:pointer;
+            z-index: 10;
+        }
+        .prev-btn { left: 24px; }
+        .next-btn { right:24px; }
+
+        /* 院线电影项目列表 */
+        .project-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap:16px;
+        }
+        .project-item{
+            padding:12px 16px;
+            border:1px solid #282828;
+            border-radius:8px;
+        }
+
+        /* 视频案例 5列2行 */
+        .video-grid{
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+            gap:24px;
+        }
+        .video-card{
+            width:100%;
+        }
+        .video-card iframe{
+            width:100%;
+            aspect-ratio:16/9;
+            border-radius:8px;
+            border:none;
+        }
+
+        /* 精选作品集5列10行，图片保持原尺寸 */
+        .gallery-grid{
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+            gap:20px;
+        }
+        .gallery-item img{
+            max-width:100%;
+            height:auto;
+            display:block;
+        }
+
+        /* 合作品牌 */
+        .brand-grid{
+            display:grid;
+            grid-template-columns: repeat(5,1fr);
+            gap:32px;
+            align-items:center;
+        }
+        .brand-item{
+            display:flex;
+            justify-content:center;
+        }
+        .brand-item img{
+            max-width:80%;
+            max-height:100px;
+            object-fit:contain;
+        }
+
+        /* 文本板块 */
+        .text-block{
+            margin-bottom:20px;
+        }
+    </style>
 </head>
 <body>
-<!--导航栏-->
-<header>
-<img src="assets/logo.png" alt="太初设计" class="logo">
-<div class="header-slogan">以AI技术为核心驱动·以电影级审美为品质标准</div>
-</header>
-<br><br><br><br><br>
+    <!-- 页面背景遮罩 -->
+    <div class="page-mask"></div>
+    <!-- 首屏弧形轮播，原有5张 + 新增7张，一共12张 -->
+    <section class="hero-slider-wrap">
+        <button class="slider-btn prev-btn">&lt;</button>
+        <div class="slider-track-wrap">
+            <div id="sliderTrack">
+                <!-- 原有5张 -->
+                <div class="slide-item"><img src="assets/img1.jpg"></div>
+                <div class="slide-item"><img src="assets/img2.jpg"></div>
+                <div class="slide-item"><img src="assets/img3.jpg"></div>
+                <div class="slide-item"><img src="assets/img4.jpg"></div>
+                <div class="slide-item"><img src="assets/img5.jpg"></div>
+                <!-- 新增7张轮播图 -->
+                <div class="slide-item"><img src="assets/img6.jpg"></div>
+                <div class="slide-item"><img src="assets/img7.jpg"></div>
+                <div class="slide-item"><img src="assets/img8.jpg"></div>
+                <div class="slide-item"><img src="assets/img9.jpg"></div>
+                <div class="slide-item"><img src="assets/img10.jpg"></div>
+                <div class="slide-item"><img src="assets/img11.jpg"></div>
+                <div class="slide-item"><img src="assets/img12.jpg"></div>
+                <!-- 复制全部12张，实现无缝无限滚动 -->
+                <div class="slide-item"><img src="assets/img1.jpg"></div>
+                <div class="slide-item"><img src="assets/img2.jpg"></div>
+                <div class="slide-item"><img src="assets/img3.jpg"></div>
+                <div class="slide-item"><img src="assets/img4.jpg"></div>
+                <div class="slide-item"><img src="assets/img5.jpg"></div>
+                <div class="slide-item"><img src="assets/img6.jpg"></div>
+                <div class="slide-item"><img src="assets/img7.jpg"></div>
+                <div class="slide-item"><img src="assets/img8.jpg"></div>
+                <div class="slide-item"><img src="assets/img9.jpg"></div>
+                <div class="slide-item"><img src="assets/img10.jpg"></div>
+                <div class="slide-item"><img src="assets/img11.jpg"></div>
+                <div class="slide-item"><img src="assets/img12.jpg"></div>
+            </div>
+        </div>
+        <button class="slider-btn next-btn">&gt;</button>
+    </section>
 
-<!--可拖拽触屏滑动轮播+左右箭头-->
-<div class="slide-box">
-  <button class="slide-btn prev-btn">&lt;</button>
-  <div class="slide-track" id="sliderTrack">
-    <div class="slide-item"><img src="assets/slide1.jpg"></div>
-    <div class="slide-item"><img src="assets/slide2.jpg"></div>
-    <div class="slide-item"><img src="assets/slide3.jpg"></div>
-    <div class="slide-item"><img src="assets/slide4.jpg"></div>
-    <div class="slide-item"><img src="assets/slide5.jpg"></div>
-    <!--复制一组实现无缝循环-->
-    <div class="slide-item"><img src="assets/slide1.jpg"></div>
-    <div class="slide-item"><img src="assets/slide2.jpg"></div>
-    <div class="slide-item"><img src="assets/slide3.jpg"></div>
-    <div class="slide-item"><img src="assets/slide4.jpg"></div>
-    <div class="slide-item"><img src="assets/slide5.jpg"></div>
-  </div>
-  <button class="slide-btn next-btn">&gt;</button>
-</div>
-<!--轮播下方两行文字-->
-<div style="width:85%;margin:24px auto 0 auto;color:#ffffff;">
-  <h2 style="margin:0 0 8px 0;font-weight:500;font-size:26px;">郑州太初设计</h2>
-  <p style="margin:0;font-size:15px;opacity:0.85;">专注海外精品仿真人全流程制作・高品质广告 TVC・企业宣传片</p>
-</div>
+    <div class="container">
+        <!-- 1.关于我们 -->
+        <section id="about">
+            <h2>关于我们</h2>
+            <div class="text-block">
+                <p>太初文化专注于院线电影、剧集、TVC广告的概念设计、分镜脚本、美学设定与美术指导，提供从前期世界观搭建到视觉落地的全流程创意服务。</p>
+            </div>
+        </section>
 
-<div class="container">
-<!--1、公司简介-->
-<section>
-<h3 class="title">关于我们</h3>
-<p class="desc">
-郑州太初设计是一支以AI技术为核心驱动力的视觉创意团队，专注于海外精品仿真人全流程制作、高品质广告TVC及企业宣传片创作。<br><br>
-团队导演与创始人分别毕业于中央美术学院、北京电影学院、中国传媒大学，核心主创深耕院线电影、广告TVC的脚本策划、美术设定与视觉落地十余年，兼具成熟的艺术审美与工业化项目执行经验。<br><br>
-太初设计以“电影级审美+前沿AI技术”为双引擎，为品牌打造具备国际质感的视觉传播方案。
-</p>
-</section>
-<!--2、核心业务-->
-<section style="margin-top:100px;">
-<h3 class="title">核心业务</h3>
-<p class="desc">
-1. 海外精品仿真人全流程制作
-AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生产，适用于品牌代言、虚拟偶像、社媒运营、产品讲解等多场景。<br><br>
-2. 高品质广告TVC
-从创意脚本、分镜设计、美术指导到拍摄执行与后期制作，提供全案视觉服务，服务客户涵盖科技、汽车、运动、美妆等多品类头部品牌。<br><br>
-3. 企业宣传片
-品牌形象片、产品宣传片、企业文化片、招商路演视频等，以电影化叙事与精良制作提升品牌质感。
-</p>
-</section>
-<!--3、团队核心背景-->
-<section style="margin-top:100px;">
-<h3 class="title">团队核心背景</h3>
-<p class="desc">
-公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。<br><br>
-教育背景：中央美术学院、北京电影学院、中国传媒大学
-</p>
-</section>
-<!--4、代表项目履历（院线剧集+动画特效电影）-->
-<section style="margin-top:100px;">
-<h3 class="title">院线电影 / 剧集项目履历</h3>
-<p class="desc">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作</p>
-<div class="movie-list">
-<div class="movie-card">
-<img src="assets/movie/poster01.jpg">
-<p>《三国·风起洛阳》黄轩、王一博</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster02.jpg">
-<p>《误杀2》肖央、任达华</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster03.jpg">
-<p>《忠犬八公》冯小刚、陈冲</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster04.jpg">
-<p>《风犬少年的天空》彭昱畅、张婧仪</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster05.jpg">
-<p>《循环》刘雅瑟</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster06.jpg">
-<p>《超越》郑恺、李昀锐</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster07.jpg">
-<p>《白夜追凶之重生》张译、赵子琪</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster08.jpg">
-<p>《三体》张鲁一、于和伟</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster09.jpg">
-<p>《悟空传》彭于晏、倪妮</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster10.jpg">
-<p>《烈火英雄》黄晓明、杜江</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster11.jpg">
-<p>《749局》王俊凯、苗苗</p>
-</div>
-<div class="movie-card">
-<img src="assets/movie/poster12.jpg">
-<p>《龙岭摸金》蔡珩、顾璇</p>
-</div>
-</div>
-<br><br>
-<p class="desc">其余参与项目：《黎明之战》《九鼎》《我的奇妙男友2》《精灵闺蜜》《古剑奇谭·厌火之乱》《古剑奇谭·剑心通明》《龙石密码》《记忆囚笼》《灯下不黑之铜山往事》《神兵特工》《今天不是最后一天》</p>
-<br><br>
-<h4 style="font-size:24px;color:#eee;margin-bottom:16px;">动画/特效电影</h4>
-<p class="desc">参与世界观架构、视觉开发、概念设计等核心环节：《年兽大作战》坏猴子影业｜《凸变英雄 BABA》绘梦动画｜《魔道祖师》视美影业</p>
-</section>
-<!--5、服务优势-->
-<section style="margin-top:100px;">
-<h3 class="title">服务优势</h3>
-<div class="advantage-wrap">
-<div class="advantage-item">
-<h4>电影级审美基因</h4>
-<p>核心团队来自央美、北电、中传，具备系统的视觉美学训练与一线电影制作经验。</p>
-</div>
-<div class="advantage-item">
-<h4>AI技术深度融合</h4>
-<p>前沿AI生成技术结合传统影视流程，仿真人逼真度、光影质感、叙事节奏达到高水准。</p>
-</div>
-<div class="advantage-item">
-<h4>全流程交付能力</h4>
-<p>创意策划、分镜设计、美术设定、数字制作直至成片交付，一站式完整解决方案。</p>
-</div>
-<div class="advantage-item">
-<h4>头部品牌服务经验</h4>
-<p>长期服务科技、汽车、运动行业头部客户，兼顾艺术表现力与商业市场需求。</p>
-</div>
-</div>
-</section>
-<!--6、合作模式-->
-<section style="margin-top:100px;">
-<h3 class="title">合作模式</h3>
-<div class="cooperate-text">
-⚪️全案委托制作<br>
-⚪️创意脚本与分镜设计<br>
-⚪️美术指导与视觉开发<br>
-⚪️AI仿真人角色定制与内容生产<br>
-⚪️企业宣传片/品牌TVC定制
-</div>
-</section>
-<!--视频作品案例（5列×2行，10个视频）-->
-<section style="margin-top:100px">
-<h3 class="title">视频作品案例</h3>
-<div class="video-grid">
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
-<div class="video-name">案例作品01</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品02</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品03</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品04</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品05</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品06</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品07</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品08</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品09</div>
-</div>
-<div class="video-card">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true"></iframe>
-<div class="video-name">案例作品10</div>
-</div>
-</div>
-</section>
-<!--画廊板块，5列10行，50张图，原图尺寸-->
-<section style="margin-top:100px">
-<h3 class="title">精选作品集</h3>
-<div class="gallery-grid">
-<img src="assets/gallery/img_01.jpg">
-<img src="assets/gallery/img_02.jpg">
-<img src="assets/gallery/img_03.jpg">
-<img src="assets/gallery/img_04.jpg">
-<img src="assets/gallery/img_05.jpg">
-<img src="assets/gallery/img_06.jpg">
-<img src="assets/gallery/img_07.jpg">
-<img src="assets/gallery/img_08.jpg">
-<img src="assets/gallery/img_09.jpg">
-<img src="assets/gallery/img_10.jpg">
-<img src="assets/gallery/img_11.jpg">
-<img src="assets/gallery/img_12.jpg">
-<img src="assets/gallery/img_13.jpg">
-<img src="assets/gallery/img_14.jpg">
-<img src="assets/gallery/img_15.jpg">
-<img src="assets/gallery/img_16.jpg">
-<img src="assets/gallery/img_17.jpg">
-<img src="assets/gallery/img_18.jpg">
-<img src="assets/gallery/img_19.jpg">
-<img src="assets/gallery/img_20.jpg">
-<img src="assets/gallery/img_21.jpg">
-<img src="assets/gallery/img_22.jpg">
-<img src="assets/gallery/img_23.jpg">
-<img src="assets/gallery/img_24.jpg">
-<img src="assets/gallery/img_25.jpg">
-<img src="assets/gallery/img_26.jpg">
-<img src="assets/gallery/img_27.jpg">
-<img src="assets/gallery/img_28.jpg">
-<img src="assets/gallery/img_29.jpg">
-<img src="assets/gallery/img_30.jpg">
-<img src="assets/gallery/img_31.jpg">
-<img src="assets/gallery/img_32.jpg">
-<img src="assets/gallery/img_33.jpg">
-<img src="assets/gallery/img_34.jpg">
-<img src="assets/gallery/img_35.jpg">
-<img src="assets/gallery/img_36.jpg">
-<img src="assets/gallery/img_37.jpg">
-<img src="assets/gallery/img_38.jpg">
-<img src="assets/gallery/img_39.jpg">
-<img src="assets/gallery/img_40.jpg">
-<img src="assets/gallery/img_41.jpg">
-<img src="assets/gallery/img_42.jpg">
-<img src="assets/gallery/img_43.jpg">
-<img src="assets/gallery/img_44.jpg">
-<img src="assets/gallery/img_45.jpg">
-<img src="assets/gallery/img_46.jpg">
-<img src="assets/gallery/img_47.jpg">
-<img src="assets/gallery/img_48.jpg">
-<img src="assets/gallery/img_49.jpg">
-<img src="assets/gallery/img_50.jpg">
-</div>
-</section>
-<!--Cooperation Brands-->
-<section style="margin-top: 100px;">
-    <h3 class="title">TVC广告合作品牌</h3>
-    <p class="desc">手机科技｜汽车｜运动｜美妆多品类视觉创意服务</p>
-    <div class="brand-grid">
-        <div class="brand-item"><img src="assets/brand/huawei.png"></div>
-        <div class="brand-item"><img src="assets/brand/oppo.png"></div>
-        <div class="brand-item"><img src="assets/brand/xiaomi.png"></div>
-        <div class="brand-item"><img src="assets/brand/oneplus.png"></div>
-        <div class="brand-item"><img src="assets/brand/vivo.png"></div>
-        <div class="brand-item"><img src="assets/brand/zte.png"></div>
-        <div class="brand-item"><img src="assets/brand/greatwall.png"></div>
-        <div class="brand-item"><img src="assets/brand/chery.png"></div>
-        <div class="brand-item"><img src="assets/brand/beijingauto.png"></div>
-        <div class="brand-item"><img src="assets/brand/liauto.png"></div>
-        <div class="brand-item"><img src="assets/brand/nio.png"></div>
-        <div class="brand-item"><img src="assets/brand/aito.png"></div>
-        <div class="brand-item"><img src="assets/brand/zekr.png"></div>
-        <div class="brand-item"><img src="assets/brand/jetour.png"></div>
-        <div class="brand-item"><img src="assets/brand/anta.png"></div>
-        <div class="brand-item"><img src="assets/brand/361.png"></div>
-        <div class="brand-item"><img src="assets/brand/li-ning.png"></div>
-        <div class="brand-item"><img src="assets/brand/xtep.png"></div>
-        <div class="brand-item"><img src="assets/brand/erke.png"></div>
-        <div class="brand-item"><img src="assets/brand/lululemon.png"></div>
-        <div class="brand-item"></div>
-        <div class="brand-item"></div>
-        <div class="brand-item"></div>
-        <div class="brand-item"></div>
+        <!-- 2.院线电影 -->
+        <section id="film-project">
+            <h2>院线电影/剧集</h2>
+            <p class="text-block">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作：</p>
+            <div class="project-list">
+                <div class="project-item">《三国·风起洛阳》（主演：黄轩、王一博）</div>
+                <div class="project-item">《误杀2》（主演：肖央、任达华）</div>
+                <div class="project-item">《忠犬八公》（主演：冯小刚、陈冲）</div>
+                <div class="project-item">《风犬少年的天空》（主演：彭昱畅、张婧仪）</div>
+                <div class="project-item">《循环》（主演：刘雅瑟）</div>
+                <div class="project-item">《超越》（主演：郑恺、李昀锐）</div>
+                <div class="project-item">《白夜追凶之重生》（主演：张译、赵子琪）</div>
+                <div class="project-item">《三体》（主演：张鲁一、于和伟）</div>
+                <div class="project-item">《悟空传》（主演：彭于晏、倪妮）</div>
+                <div class="project-item">《烈火英雄》（主演：黄晓明、杜江）</div>
+            </div>
+        </section>
+
+        <!--3.视频作品案例 5列2行-->
+        <section id="video-case">
+            <h2>视频作品案例</h2>
+            <div class="video-grid">
+                <div class="video-card">
+                    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-card">
+                    <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+                </div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+                <div class="video-card"></div>
+            </div>
+        </section>
+
+        <!--4.精选作品集 5列10行，原图尺寸-->
+        <section id="gallery">
+            <h2>精选作品集</h2>
+            <div class="gallery-grid">
+                <!-- 示例，后续自行填充gallery文件夹图片 assets/gallery/xxx.jpg -->
+                <div class="gallery-item"><img src="assets/gallery/img01.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img02.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img03.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img04.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img05.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img06.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img07.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img08.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img09.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img10.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img11.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img12.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img13.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img14.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img15.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img16.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img17.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img18.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img19.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img20.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img21.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img22.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img23.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img24.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img25.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img26.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img27.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img28.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img29.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img30.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img31.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img32.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img33.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img34.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img35.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img36.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img37.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img38.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img39.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img40.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img41.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img42.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img43.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img44.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img45.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img46.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img47.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img48.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img49.jpg"></div>
+                <div class="gallery-item"><img src="assets/gallery/img50.jpg"></div>
+            </div>
+        </section>
+
+        <!--5.TVC广告合作品牌-->
+        <section id="brand">
+            <h2>TVC广告合作品牌</h2>
+            <div class="brand-grid">
+                <div class="brand-item"><img src="assets/brands/anta.png" alt="安踏"></div>
+                <div class="brand-item"><img src="assets/brands/brand2.png"></div>
+                <div class="brand-item"><img src="assets/brands/brand3.png"></div>
+                <div class="brand-item"><img src="assets/brands/brand4.png"></div>
+                <div class="brand-item"><img src="assets/brands/brand5.png"></div>
+            </div>
+        </section>
+
+        <!--6.核心业务-->
+        <section id="business">
+            <h2>核心业务</h2>
+            <p class="text-block">院线电影/剧集概念设计、分镜脚本绘制、世界观架构、影视美术设定、广告TVC视觉方案、影视美术教学。</p>
+        </section>
+
+        <!--7.团队核心-->
+        <section id="team">
+            <h2>团队核心</h2>
+            <p class="text-block">公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。</p>
+            <p class="text-block">教育背景：中央美术学院、北京电影学院、中国传媒大学</p>
+        </section>
+
+        <!--8.服务优势-->
+        <section id="advantage">
+            <h2>服务优势</h2>
+            <p class="text-block">一线影视主创团队，完整的前期视觉落地经验，从脚本到美术全链路把控，高效沟通，适配电影、剧集、TVC多类型项目。</p>
+        </section>
+
+        <!--9.合作模式-->
+        <section id="cooperation">
+            <h2>合作模式</h2>
+            <p class="text-block">项目制委托、阶段性美术外包、长期项目顾问合作。</p>
+        </section>
     </div>
-</section>
-</div>
-<!--页脚-->
-<footer>
-以技术为笔，以审美为尺，致力于成为AI时代高品质视觉内容的定义者<br><br>
-    
-郑州太初设计有限公司 ©2026 TouchTrue Design
-</footer>
 
-<!--全新重写JS，轮播全部功能修复完毕-->
 <script>
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
+// 修改轮播宽度，图片总数更新为12张
 const slideWidth = 336;
 let offset = 0;
 let autoTimer;
@@ -475,17 +347,18 @@ let dragStartX = 0;
 let dragOffset = 0;
 let dragging = false;
 
-//自动滚动
+//自动滚动，50ms慢速
 function startAuto() {
     autoTimer = setInterval(() => {
         offset -= 1;
-        if (Math.abs(offset) >= slideWidth * 5) offset = 0;
+        // 这里修改判断条件，12张图片
+        if (Math.abs(offset) >= slideWidth * 12) offset = 0;
         track.style.transform = `translateX(${offset}px)`;
-    },45)
+    },50)
 }
 function pauseAuto(){clearInterval(autoTimer)}
 
-//拖拽
+//鼠标拖拽
 track.addEventListener('mousedown',e=>{
     dragging=true;
     dragStartX=e.clientX;
@@ -517,18 +390,18 @@ window.addEventListener('touchend',()=>{
     dragging=false;
     startAuto();
 })
-//左右箭头
+//左右箭头点击
 prevBtn.onclick=()=>{
     pauseAuto();
     offset += slideWidth;
-    if(offset>0)offset=-slideWidth*4;
+    if(offset>0)offset=-slideWidth*11;
     track.style.transform=`translateX(${offset}px)`;
     setTimeout(startAuto,1200);
 }
 nextBtn.onclick=()=>{
     pauseAuto();
     offset -= slideWidth;
-    if(Math.abs(offset)>=slideWidth*5)offset=0;
+    if(Math.abs(offset)>=slideWidth*12)offset=0;
     track.style.transform=`translateX(${offset}px)`;
     setTimeout(startAuto,1200);
 }
