@@ -11,20 +11,10 @@
             box-sizing: border-box;
         }
         body {
-            /* 背景图，兜底底色 #101111 */
-            background: #101111 url("assets/bg.jpg") center center;
-            background-size: cover;
-            background-attachment: fixed;
+            background: #101111;
             color: #ffffff;
             font-family: system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-        }
-        /* 半透明遮罩，保证文字可读性 */
-        .page-mask{
-            position: fixed;
-            inset:0;
-            background-color: rgba(16,17,17,0.85);
-            z-index:-1;
         }
         .container {
             max-width: 1400px;
@@ -46,7 +36,7 @@
             color: #cccccc;
         }
 
-        /* 首屏弧形轮播，保留原有滑动交互 */
+        /* 首屏弧形轮播，支持拖拽、触屏滑动、箭头、自动滚动 */
         .hero-slider-wrap {
             position: relative;
             width: 100%;
@@ -152,55 +142,51 @@
     </style>
 </head>
 <body>
-    <!-- 页面背景遮罩 -->
-    <div class="page-mask"></div>
-    <!-- 首屏弧形轮播，原有5张 + 新增7张，一共12张，保留拖拽滑动+自动滚动+箭头 -->
+    <!-- 首屏弧形轮播，5张图片，位于assets根目录，保留全部滑动交互 -->
     <section class="hero-slider-wrap">
         <button class="slider-btn prev-btn">&lt;</button>
         <div class="slider-track-wrap">
             <div id="sliderTrack">
-                <!-- 原有5张轮播图 -->
+                <!-- 原始5张轮播图，放在assets文件夹，不是gallery -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
                 <div class="slide-item"><img src="assets/img4.jpg"></div>
                 <div class="slide-item"><img src="assets/img5.jpg"></div>
-                <!-- 新增7张轮播图 -->
-                <div class="slide-item"><img src="assets/img6.jpg"></div>
-                <div class="slide-item"><img src="assets/img7.jpg"></div>
-                <div class="slide-item"><img src="assets/img8.jpg"></div>
-                <div class="slide-item"><img src="assets/img9.jpg"></div>
-                <div class="slide-item"><img src="assets/img10.jpg"></div>
-                <div class="slide-item"><img src="assets/img11.jpg"></div>
-                <div class="slide-item"><img src="assets/img12.jpg"></div>
-                <!-- 复制全部12张实现无缝无限滚动 -->
+                <!-- 复制5张，实现无缝无限滚动 -->
                 <div class="slide-item"><img src="assets/img1.jpg"></div>
                 <div class="slide-item"><img src="assets/img2.jpg"></div>
                 <div class="slide-item"><img src="assets/img3.jpg"></div>
                 <div class="slide-item"><img src="assets/img4.jpg"></div>
                 <div class="slide-item"><img src="assets/img5.jpg"></div>
-                <div class="slide-item"><img src="assets/img6.jpg"></div>
-                <div class="slide-item"><img src="assets/img7.jpg"></div>
-                <div class="slide-item"><img src="assets/img8.jpg"></div>
-                <div class="slide-item"><img src="assets/img9.jpg"></div>
-                <div class="slide-item"><img src="assets/img10.jpg"></div>
-                <div class="slide-item"><img src="assets/img11.jpg"></div>
-                <div class="slide-item"><img src="assets/img12.jpg"></div>
             </div>
         </div>
         <button class="slider-btn next-btn">&gt;</button>
     </section>
 
     <div class="container">
-        <!-- 1.关于我们 -->
+        <!-- 1.公司简介 -->
         <section id="about">
-            <h2>关于我们</h2>
+            <h2>公司简介</h2>
             <div class="text-block">
                 <p>太初文化专注于院线电影、剧集、TVC广告的概念设计、分镜脚本、美学设定与美术指导，提供从前期世界观搭建到视觉落地的全流程创意服务。</p>
             </div>
         </section>
 
-        <!-- 2.院线电影 -->
+        <!-- 2.核心业务 -->
+        <section id="business">
+            <h2>核心业务</h2>
+            <p class="text-block">院线电影/剧集概念设计、分镜脚本绘制、世界观架构、影视美术设定、广告TVC视觉方案、影视美术教学。</p>
+        </section>
+
+        <!--3.团队核心背景-->
+        <section id="team">
+            <h2>团队核心背景</h2>
+            <p class="text-block">公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。</p>
+            <p class="text-block">教育背景：中央美术学院、北京电影学院、中国传媒大学</p>
+        </section>
+
+        <!--4.院线电影/剧集 代表项目履历-->
         <section id="film-project">
             <h2>院线电影/剧集</h2>
             <p class="text-block">核心主创曾参与以下项目的概念设计、分镜脚本、美学设定、美术指导等工作：</p>
@@ -218,7 +204,7 @@
             </div>
         </section>
 
-        <!--3.视频作品案例 5列2行-->
+        <!--5.视频作品案例 5列2行-->
         <section id="video-case">
             <h2>视频作品案例</h2>
             <div class="video-grid">
@@ -239,7 +225,7 @@
             </div>
         </section>
 
-        <!--4.精选作品集 5列10行，原图尺寸-->
+        <!--6.精选作品集 5列10行，原图尺寸，gallery文件夹内50张图片-->
         <section id="gallery">
             <h2>精选作品集</h2>
             <div class="gallery-grid">
@@ -296,7 +282,19 @@
             </div>
         </section>
 
-        <!--5.TVC广告合作品牌-->
+        <!--7.服务优势-->
+        <section id="advantage">
+            <h2>服务优势</h2>
+            <p class="text-block">一线影视主创团队，完整的前期视觉落地经验，从脚本到美术全链路把控，高效沟通，适配电影、剧集、TVC多类型项目。</p>
+        </section>
+
+        <!--8.合作模式-->
+        <section id="cooperation">
+            <h2>合作模式</h2>
+            <p class="text-block">项目制委托、阶段性美术外包、长期项目顾问合作。</p>
+        </section>
+
+        <!--9.合作品牌（放到最后一项）-->
         <section id="brand">
             <h2>TVC广告合作品牌</h2>
             <div class="brand-grid">
@@ -306,31 +304,6 @@
                 <div class="brand-item"><img src="assets/brands/brand4.png"></div>
                 <div class="brand-item"><img src="assets/brands/brand5.png"></div>
             </div>
-        </section>
-
-        <!--6.核心业务-->
-        <section id="business">
-            <h2>核心业务</h2>
-            <p class="text-block">院线电影/剧集概念设计、分镜脚本绘制、世界观架构、影视美术设定、广告TVC视觉方案、影视美术教学。</p>
-        </section>
-
-        <!--7.团队核心-->
-        <section id="team">
-            <h2>团队核心</h2>
-            <p class="text-block">公司核心主创长期担任资深分镜导演、美术指导、世界观架构师、影视概念设计师，深耕院线电影、广告TVC的脚本方案及美学设定与教学十数年，兼具深厚的艺术功底与丰富的一线实战经验。</p>
-            <p class="text-block">教育背景：中央美术学院、北京电影学院、中国传媒大学</p>
-        </section>
-
-        <!--8.服务优势-->
-        <section id="advantage">
-            <h2>服务优势</h2>
-            <p class="text-block">一线影视主创团队，完整的前期视觉落地经验，从脚本到美术全链路把控，高效沟通，适配电影、剧集、TVC多类型项目。</p>
-        </section>
-
-        <!--9.合作模式-->
-        <section id="cooperation">
-            <h2>合作模式</h2>
-            <p class="text-block">项目制委托、阶段性美术外包、长期项目顾问合作。</p>
         </section>
     </div>
 
@@ -345,17 +318,17 @@ let dragStartX = 0;
 let dragOffset = 0;
 let dragging = false;
 
-//自动滚动，50ms慢速
+//自动滚动
 function startAuto() {
     autoTimer = setInterval(() => {
         offset -= 1;
-        if (Math.abs(offset) >= slideWidth * 12) offset = 0;
+        if (Math.abs(offset) >= slideWidth * 5) offset = 0;
         track.style.transform = `translateX(${offset}px)`;
     },50)
 }
 function pauseAuto(){clearInterval(autoTimer)}
 
-//鼠标拖拽滑动（保留原有可滑动逻辑）
+//鼠标拖拽滑动
 track.addEventListener('mousedown',e=>{
     dragging=true;
     dragStartX=e.clientX;
@@ -371,7 +344,7 @@ window.addEventListener('mouseup',()=>{
     dragging=false;
     startAuto();
 })
-//手机触屏滑动（保留原有触屏滑动）
+//触屏滑动
 track.addEventListener('touchstart',e=>{
     dragging=true;
     dragStartX=e.touches[0].clientX;
@@ -387,18 +360,18 @@ window.addEventListener('touchend',()=>{
     dragging=false;
     startAuto();
 })
-//左右箭头点击
+//左右箭头点击事件
 prevBtn.onclick=()=>{
     pauseAuto();
     offset += slideWidth;
-    if(offset>0)offset=-slideWidth*11;
+    if(offset>0)offset=-slideWidth*4;
     track.style.transform=`translateX(${offset}px)`;
     setTimeout(startAuto,1200);
 }
 nextBtn.onclick=()=>{
     pauseAuto();
     offset -= slideWidth;
-    if(Math.abs(offset)>=slideWidth*12)offset=0;
+    if(Math.abs(offset)>=slideWidth*5)offset=0;
     track.style.transform=`translateX(${offset}px)`;
     setTimeout(startAuto,1200);
 }
