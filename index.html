@@ -11,6 +11,7 @@ body{
   color:#e8e8e8;
   line-height:1.7;
   background-color:transparent;
+  /* 下面这行是新增的背景图，请确保 assets/bg.jpg 存在 */
   background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("assets/bg.jpg");
   background-size:cover;
   background-position:center center;
@@ -493,7 +494,17 @@ AI数字人、超写实虚拟角色、仿真人形象开发与全流程内容生
 const track = document.getElementById('sliderTrack');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-const slideWidth = 336;
+// 替换原代码中的 const slideWidth = 336;
+let slideWidth = 336;
+function updateSlideWidth() {
+    const firstItem = document.querySelector('.slide-item');
+    if (firstItem) {
+        const gap = 16; // 与CSS中的gap: 16px保持一致
+        slideWidth = firstItem.offsetWidth + gap;
+    }
+}
+window.addEventListener('resize', updateSlideWidth);
+updateSlideWidth(); // 初始化
 let offset = 0;
 let autoTimer;
 let dragStartX = 0;
