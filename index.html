@@ -78,11 +78,14 @@
         .prev-btn { left: 24px; }
         .next-btn { right:24px; }
         .hero-title{
-            text-align:center;
-            font-size:42px;
-            margin-top:20px;
-            letter-spacing:4px;
-        }
+            .hero-title{
+    text-align:left;    /* 改成左对齐 */
+    font-size:42px;
+    margin-top:20px;
+    letter-spacing:4px;
+    /* 为了和下方“公司介绍”完美对齐，可以加上和 h2 一样的左内边距 */
+    padding-left: 40px; /* 24px(container的padding) + 16px(h2的padding) */
+}
 
 /* ----- 电影卡片（竖版海报） ----- */
 .film-grid {
