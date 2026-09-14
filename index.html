@@ -7,7 +7,205 @@
       太初设计 | TouchTrue
     </title>
     <style>
- *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif} html{background:#101111} body{   color:#e8e8e8;   line-height:1.7;   background-color:transparent;   /* 下面这行是新增的背景图，请确保 assets/bg.jpg 存在 */   background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("assets/bg.jpg");   background-size:cover;   background-position:center center;   background-repeat:no-repeat;   background-attachment:fixed; } /*导航栏*/ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)} .logo{height:72px} .header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px} /*通用容器*/ .container{max-width:1300px;margin:0 auto;padding:80px 40px} .title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal} .desc{color:#bbbbbb;font-size:16px} /*视频案例网格：5列2行排版*/ .video-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:30px} .video-card{background:#282828;border-radius:4px;overflow:hidden} .video-card iframe{width:100%;height:200px;border:none} .video-name{padding:12px;font-size:14px;color:#ddd}   /* 视频卡片点击单独打开 */ .video-card{   position: relative; /* 让覆盖层能绝对定位 */ } .video-overlay{   position: absolute;   top: 0;   left: 0;   width: 100%;   height: 100%;   z-index: 2;   cursor: pointer;   /* 透明，不遮挡视觉，只拦截点击 */   background: transparent; } /*====视频独立播放层（点击卡片后全屏播放，不跳转B站）====*/ .video-modal{position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:9999;display:none;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box;} .video-modal.open{display:flex;} .video-modal-inner{position:relative;width:100%;max-width:1000px;} .video-modal-player iframe{width:100%;height:562px;border:none;border-radius:8px;display:block;background:#000;} .video-modal-close{position:absolute;top:-46px;right:0;background:none;border:none;color:#fff;font-size:38px;line-height:1;cursor:pointer;padding:0;} @media(max-width:900px){.video-modal-player iframe{height:220px;}} /*====画廊50张图片【原图尺寸，不压缩】====*/ .gallery-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px;margin-top:30px } .gallery-grid img{ width:auto !important; height:auto !important; max-width:100%; border-radius:3px; display:block; } /*=====影视履历板块=====*/ .movie-list{ display:grid; grid-template-columns:repeat(4,1fr); gap:22px; margin-top:30px; } .movie-card{ background:#1f1f1f; border-radius:6px; overflow:hidden; } .movie-card img{ width:100%; height:260px; object-fit:cover; } .movie-card p{ padding:12px 14px; color:#cccccc; font-size:14px; } /*=====合作品牌LOGO区域=====*/ .brand-grid{     display:grid;     grid-template-columns:repeat(6,1fr);     gap:30px;     margin-top:30px;     align-items:center; } .brand-item{     height:95px;     display:flex;     align-items:center;     justify-content:center; } .brand-item img{     max-width:82%;     max-height:72px;     width:auto;     height:auto;     object-fit:contain;     filter:brightness(0.85);     transition:0.3s; } .brand-item img:hover{     filter:brightness(1.15); } /*服务优势区块*/ .advantage-wrap{ margin-top:30px; display:grid; grid-template-columns:repeat(4,1fr); gap:24px; } .advantage-item{ background:#1c1c1c; padding:24px; border-radius:6px; } .advantage-item h4{ color:#fff; font-size:18px; margin-bottom:12px; } .advantage-item p{ color:#b8b8b8; font-size:15px; } /*合作模式*/ .cooperate-text{ color:#bbbbbb; line-height:2; margin-top:20px; font-size:16px; } footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111} /*=====修复后的轮播（拖拽+箭头+自动滚动）=====*/ .slide-box{   width:85%;   margin:0 auto;   position:relative;   overflow:hidden;   border-radius:12px; } .slide-track{   display:flex;   gap:16px;   touch-action:pan-y;   cursor:grab; } .slide-track:active{cursor:grabbing} .slide-item{   flex:0 0 320px;   height:210px;   border-radius:8px;   overflow:hidden; } .slide-item img{   width:100%;   height:100%;   object-fit:cover;   pointer-events:none;   -webkit-user-drag:none;   user-select:none; } /*左右箭头按钮*/ .slide-btn{   position:absolute;   top:50%;   transform:translateY(-50%);   width:44px;   height:44px;   border-radius:50%;   background:rgba(255,255,255,0.18);   color:#fff;   border:none;   font-size:22px;   cursor:pointer;   z-index:10;   transition:0.25s; } .slide-btn:hover{   background:rgba(255,255,255,0.4); } .prev-btn{left:12px} .next-btn{right:12px} /*手机适配*/ @media(max-width:900px){ .video-grid{grid-template-columns:repeat(2,1fr)} .gallery-grid{grid-template-columns:repeat(2,1fr)} .movie-list{grid-template-columns:repeat(2,1fr)} .brand-grid{grid-template-columns:repeat(3,1fr)} .advantage-wrap{grid-template-columns:1fr} .header-slogan{display:none} .slide-item{flex:0 0 260px;height:180px} .slide-btn{width:36px;height:36px;font-size:18px} } 
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Microsoft YaHei",sans-serif}
+html{background:#101111}
+body{
+  color:#e8e8e8;
+  line-height:1.7;
+  background-color:transparent;
+  /* 下面这行是新增的背景图，请确保 assets/bg.jpg 存在 */
+  background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("assets/bg.jpg");
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+/*导航栏*/
+header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
+.logo{height:72px}
+.header-slogan{font-size:18px;color:#cccccc;letter-spacing:1px}
+/*通用容器*/
+.container{max-width:1300px;margin:0 auto;padding:80px 40px}
+.title{font-size:42px;margin-bottom:24px;color:#f1f1f1;font-weight:normal}
+.desc{color:#bbbbbb;font-size:16px}
+/*视频案例网格：5列2行排版*/
+.video-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:30px}
+.video-card{background:#282828;border-radius:4px;overflow:hidden;cursor:pointer;}
+.video-card iframe{width:100%;height:200px;border:none;pointer-events:none; /* 关键：禁用iframe鼠标事件，让点击落到卡片上 */}
+.video-name{padding:12px;font-size:14px;color:#ddd}
+   /* 视频卡片点击单独打开 */
+.video-card{
+  position: relative; /* 让覆盖层能绝对定位 */
+}
+.video-overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  cursor: pointer;
+  /* 透明，不遮挡视觉，只拦截点击 */
+  background: transparent;
+}
+/*====视频独立播放层（点击卡片后全屏播放，不跳转B站）====*/
+.video-modal{position:fixed;inset:0;background:rgba(0,0,0,0.94);z-index:9999;display:none;align-items:center;justify-content:center;padding:48px 24px;box-sizing:border-box;}
+.video-modal.open{display:flex;}
+.video-modal-inner{position:relative;width:100%;max-width:1000px;}
+.video-modal-player iframe{width:100%;height:562px;border:none;border-radius:8px;display:block;background:#000;}
+.video-modal-close{position:absolute;top:-46px;right:0;background:none;border:none;color:#fff;font-size:38px;line-height:1;cursor:pointer;padding:0;}
+@media(max-width:900px){.video-modal-player iframe{height:220px;}}
+/*====画廊50张图片【原图尺寸，不压缩】====*/
+.gallery-grid{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:14px;margin-top:30px
+}
+.gallery-grid img{
+ width:auto !important;
+ height:auto !important;
+ max-width:100%;
+ border-radius:3px;
+ display:block;
+}
+/*=====影视履历板块=====*/
+.movie-list{
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:22px;
+ margin-top:30px;
+}
+.movie-card{
+ background:#1f1f1f;
+ border-radius:6px;
+ overflow:hidden;
+}
+.movie-card img{
+ width:100%;
+ height:260px;
+ object-fit:cover;
+}
+.movie-card p{
+ padding:12px 14px;
+ color:#cccccc;
+ font-size:14px;
+}
+/*=====合作品牌LOGO区域=====*/
+.brand-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:30px;
+    margin-top:30px;
+    align-items:center;
+}
+.brand-item{
+    height:95px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.brand-item img{
+    max-width:82%;
+    max-height:72px;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    filter:brightness(0.85);
+    transition:0.3s;
+}
+.brand-item img:hover{
+    filter:brightness(1.15);
+}
+/*服务优势区块*/
+.advantage-wrap{
+ margin-top:30px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:24px;
+}
+.advantage-item{
+ background:#1c1c1c;
+ padding:24px;
+ border-radius:6px;
+}
+.advantage-item h4{
+ color:#fff;
+ font-size:18px;
+ margin-bottom:12px;
+}
+.advantage-item p{
+ color:#b8b8b8;
+ font-size:15px;
+}
+/*合作模式*/
+.cooperate-text{
+ color:#bbbbbb;
+ line-height:2;
+ margin-top:20px;
+ font-size:16px;
+}
+footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px solid #222;margin-top:80px;background:#101111}
+/*=====修复后的轮播（拖拽+箭头+自动滚动）=====*/
+.slide-box{
+  width:85%;
+  margin:0 auto;
+  position:relative;
+  overflow:hidden;
+  border-radius:12px;
+}
+.slide-track{
+  display:flex;
+  gap:16px;
+  touch-action:pan-y;
+  cursor:grab;
+}
+.slide-track:active{cursor:grabbing}
+.slide-item{
+  flex:0 0 320px;
+  height:210px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.slide-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  pointer-events:none;
+  -webkit-user-drag:none;
+  user-select:none;
+}
+/*左右箭头按钮*/
+.slide-btn{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.18);
+  color:#fff;
+  border:none;
+  font-size:22px;
+  cursor:pointer;
+  z-index:10;
+  transition:0.25s;
+}
+.slide-btn:hover{
+  background:rgba(255,255,255,0.4);
+}
+.prev-btn{left:12px}
+.next-btn{right:12px}
+/*手机适配*/
+@media(max-width:900px){
+ .video-grid{grid-template-columns:repeat(2,1fr)}
+ .gallery-grid{grid-template-columns:repeat(2,1fr)}
+ .movie-list{grid-template-columns:repeat(2,1fr)}
+ .brand-grid{grid-template-columns:repeat(3,1fr)}
+ .advantage-wrap{grid-template-columns:1fr}
+ .header-slogan{display:none}
+ .slide-item{flex:0 0 260px;height:180px}
+ .slide-btn{width:36px;height:36px;font-size:18px}
+ }
     </style>
   </head>
   <body>
@@ -223,70 +421,70 @@
           视频作品案例
         </h3>
         <div class="video-grid">
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
             </iframe>
             <div class="video-name">
               案例作品01
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品02
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品03
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品04
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品05
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品06
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品07
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品08
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品09
             </div>
           </div>
-          <div class="video-card">
+          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1">
             <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
@@ -527,16 +725,15 @@
   var prevBtn = document.querySelector('.slide-btn.prev-btn');
   var nextBtn = document.querySelector('.slide-btn.next-btn');
   var items = track.children;
-  var N = items.length;            /* 24：12 张原图 + 复制 12 张做无缝循环 */
+  var N = items.length;
+           /* 24：12 张原图 + 复制 12 张做无缝循环 */
   var GAP = 16;
   var offset = 0;                  /* 负值，向左滚动 */
   var half = 0;                    /* 前 12 张总宽度 */
   var dragging = false, startX = 0, startOffset = 0;
-
   function stepW(){ var r = items[0].getBoundingClientRect(); return r.width + GAP; }
   function render(){ track.style.transform = 'translate3d(' + offset + 'px,0,0)'; }
   function measure(){ half = stepW() * (N / 2); render(); }
-
   function frame(){
     if(!dragging){
       offset -= 1.0;               /* 自动滚动速度（像素/帧） */
@@ -545,7 +742,6 @@
     render();
     requestAnimationFrame(frame);
   }
-
   function down(x){ dragging = true; startX = x; startOffset = offset; }
   function move(x){
     if(!dragging) return;
@@ -554,7 +750,6 @@
     if(offset > 0) offset -= half;
   }
   function up(){ dragging = false; }
-
   track.addEventListener('pointerdown', function(e){
     down(e.clientX);
     try{ track.setPointerCapture(e.pointerId); }catch(err){}
@@ -562,44 +757,43 @@
   track.addEventListener('pointermove', function(e){ move(e.clientX); });
   track.addEventListener('pointerup', up);
   track.addEventListener('pointercancel', up);
-
   if(prevBtn) prevBtn.onclick = function(){ offset += stepW(); if(offset > 0) offset -= half; };
   if(nextBtn) nextBtn.onclick = function(){ offset -= stepW(); if(-offset >= half) offset += half; };
-
   window.addEventListener('resize', measure);
   measure();
   requestAnimationFrame(frame);
 })();
- /* ===== 点击视频卡片：在本站弹出独立播放层（不跳转B站） ===== */
-var videoModal = document.getElementById('videoModal');
-var videoModalPlayer = document.getElementById('videoModalPlayer');
-var videoModalClose = document.getElementById('videoModalClose');
 
+/* ===== 修复：点击视频卡片弹窗播放（PC+手机端都可用） ===== */
+const videoModal = document.getElementById('videoModal');
+const videoModalPlayer = document.getElementById('videoModalPlayer');
+const videoModalClose = document.getElementById('videoModalClose');
+
+// 绑定卡片点击事件
 document.querySelectorAll('.video-card').forEach(function(card){
-  var iframe = card.querySelector('iframe');
-  if(!iframe) return;
-  var src = iframe.getAttribute('src');
-  var overlay = document.createElement('div');
-  overlay.className = 'video-overlay';
-  overlay.title = '点击播放视频';
-  overlay.addEventListener('click', function(e){
-    e.preventDefault();
-    videoModalPlayer.innerHTML = '<iframe src="' + src + '&autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>';
+  card.addEventListener('click', function(){
+    const src = this.getAttribute('data-bv-src');
+    if(!src) return;
+    videoModalPlayer.innerHTML = `<iframe src="${src}&autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
     videoModal.classList.add('open');
     document.body.style.overflow = 'hidden';
-  });
-  card.appendChild(overlay);
+  })
 });
 
+// 关闭弹窗
 function closeVideoModal(){
   videoModal.classList.remove('open');
   videoModalPlayer.innerHTML = '';
   document.body.style.overflow = '';
 }
 videoModalClose.addEventListener('click', closeVideoModal);
-videoModal.addEventListener('click', function(e){ if(e.target === videoModal) closeVideoModal(); });
-document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeVideoModal(); });
-</script>
+videoModal.addEventListener('click', function(e){
+  if(e.target === videoModal) closeVideoModal();
+});
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') closeVideoModal();
+});
+    </script>
     <!--视频独立播放层：点击卡片后在此全屏播放-->
     <div class="video-modal" id="videoModal">
       <div class="video-modal-inner">
