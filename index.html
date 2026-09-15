@@ -54,6 +54,9 @@ header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex
 .video-modal-inner{position:relative;width:100%;max-width:1000px;}
 .video-modal-player iframe{width:100%;height:562px;border:none;border-radius:8px;display:block;background:#000;}
 .video-modal-close{position:absolute;top:-46px;right:0;background:none;border:none;color:#fff;font-size:38px;line-height:1;cursor:pointer;padding:0;}
+/* 全屏状态下：关闭按钮固定在视口右上角，视频铺满全屏 */
+.video-modal-inner:fullscreen .video-modal-close{position:fixed;top:20px;right:24px;}
+.video-modal-inner:fullscreen .video-modal-player iframe{height:100vh;}
 @media(max-width:900px){.video-modal-player iframe{height:220px;}}
 /*====画廊50张图片【原图尺寸，不压缩】====*/
 .gallery-grid{
@@ -421,71 +424,71 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
           视频作品案例
         </h3>
         <div class="video-grid">
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752708561&bvid=BV1nYtg6BE9C&cid=41481932524&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true">
             </iframe>
             <div class="video-name">
               案例作品01
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709068&bvid=BV1HYtg6BEA2&cid=41481932716&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品02
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752707784&bvid=BV1HYtg6BEjo&cid=41481994641&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品03
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709316&bvid=BV1nYtg6BEac&cid=41481994966&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品04
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752774080&bvid=BV1rYtg6BEpo&cid=41481994891&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品05
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752775868&bvid=BV16Ytg6BECa&cid=41481995500&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品06
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752775862&bvid=BV16Ytg6BECB&cid=41481996484&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品07
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752709298&bvid=BV1nYtg6BEY7&cid=41481996824&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品08
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752710062&bvid=BV1nYtg6BE2y&cid=41481996913&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品09
             </div>
           </div>
-          <div class="video-card" data-bv-src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1">
-            <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
+          <div class="video-card" data-bv-src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1">
+            <iframe src="https://player.bilibili.com/player.html?isOutside=true&aid=117193752840355&bvid=BV1cYtg6zEhs&cid=41482522401&p=1" scrolling="no" border="0" frameborder="no" framespacing="true">
             </iframe>
             <div class="video-name">
               案例作品10
@@ -716,7 +719,14 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
       <br>
       <br>
       郑州太初设计有限公司 ©2026 TouchTrue Design
-    </footer>
+        </footer>
+    <!-- 视频播放弹窗（点击视频卡片后全屏播放） -->
+    <div class="video-modal" id="videoModal">
+      <div class="video-modal-inner">
+        <button type="button" class="video-modal-close" id="videoModalClose">×</button>
+        <div class="video-modal-player" id="videoModalPlayer"></div>
+      </div>
+    </div>
     <script>
 /* ===== 轮播：自动滚动 + 鼠标/触摸拖拽 + 左右箭头（无缝循环） ===== */
 (function(){
@@ -763,102 +773,58 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
   measure();
   requestAnimationFrame(frame);
 })();
-
-/* ===== 轮播：自动滚动 + 鼠标/触摸拖拽 + 左右箭头（无缝循环） ===== */
-(function(){
-  var track = document.getElementById('sliderTrack');
-  if(!track) return;
-  var prevBtn = document.querySelector('.slide-btn.prev-btn');
-  var nextBtn = document.querySelector('.slide-btn.next-btn');
-  var items = track.children;
-  var N = items.length;
-           /* 24：12 张原图 + 复制 12 张做无缝循环 */
-  var GAP = 16;
-  var offset = 0;                  /* 负值，向左滚动 */
-  var half = 0;                    /* 前 12 张总宽度 */
-  var dragging = false, startX = 0, startOffset = 0;
-  function stepW(){ var r = items[0].getBoundingClientRect(); return r.width + GAP; }
-  function render(){ track.style.transform = 'translate3d(' + offset + 'px,0,0)'; }
-  function measure(){ half = stepW() * (N / 2); render(); }
-  function frame(){
-    if(!dragging){
-      offset -= 1.0;               /* 自动滚动速度（像素/帧） */
-      if(-offset >= half) offset += half;   /* 滚完一轮无缝跳回 */
-    }
-    render();
-    requestAnimationFrame(frame);
-  }
-  function down(x){ dragging = true; startX = x; startOffset = offset; }
-  function move(x){
-    if(!dragging) return;
-    offset = startOffset + (x - startX);
-    if(-offset > half) offset += half;
-    if(offset > 0) offset -= half;
-  }
-  function up(){ dragging = false; }
-  track.addEventListener('pointerdown', function(e){
-    down(e.clientX);
-    try{ track.setPointerCapture(e.pointerId); }catch(err){}
-  });
-  track.addEventListener('pointermove', function(e){ move(e.clientX); });
-  track.addEventListener('pointerup', up);
-  track.addEventListener('pointercancel', up);
-  if(prevBtn) prevBtn.onclick = function(){ offset += stepW(); if(offset > 0) offset -= half; };
-  if(nextBtn) nextBtn.onclick = function(){ offset -= stepW(); if(-offset >= half) offset += half; };
-  window.addEventListener('resize', measure);
-  measure();
-  requestAnimationFrame(frame);
-})();
-
-/* ===== 视频弹窗修复版本【HTML和CSS完全不动】 ===== */
+/* ===== 视频弹窗：点击卡片后全屏播放（不跳转B站） ===== */
 const videoModal = document.getElementById('videoModal');
 const videoModalPlayer = document.getElementById('videoModalPlayer');
 const videoModalClose = document.getElementById('videoModalClose');
-
-// 点击卡片打开弹窗
-document.querySelector('.video-grid').addEventListener('click', function(e){
-  const card = e.target.closest('.video-card');
-  if(!card) return;
-  const src = card.dataset.bvSrc;
-  console.log("点击卡片，视频地址：",src);
-
-  videoModalPlayer.innerHTML = `<iframe src="${src}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
-  videoModal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-
-  // 弹窗出现后延时尝试全屏
-  setTimeout(()=>{
-    const innerEl = document.querySelector('.video-modal-inner');
-    if (innerEl) {
-      if (innerEl.requestFullscreen) {
-        innerEl.requestFullscreen();
-      } else if (innerEl.webkitRequestFullscreen) {
-        innerEl.webkitRequestFullscreen();
+const videoGrid = document.querySelector('.video-grid');
+// 任一元素缺失都直接跳过，绝不让脚本报错拖垮页面其他功能
+if (videoModal && videoModalPlayer && videoModalClose && videoGrid) {
+  // 点击卡片打开弹窗
+  videoGrid.addEventListener('click', function(e){
+    const card = e.target.closest('.video-card');
+    if(!card) return;
+    const src = card.dataset.bvSrc;
+    console.log("点击卡片，视频地址：",src);
+    videoModalPlayer.innerHTML = `<iframe src="${src}" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // 弹窗出现后延时尝试全屏
+    setTimeout(()=>{
+      const innerEl = document.querySelector('.video-modal-inner');
+      if (innerEl) {
+        if (innerEl.requestFullscreen) {
+          const p = innerEl.requestFullscreen();
+          if (p && p.catch) p.catch(function(){});
+        } else if (innerEl.webkitRequestFullscreen) {
+          innerEl.webkitRequestFullscreen();
+        }
+      }
+    },400)
+  });
+  // 关闭弹窗
+  function closeVideoModal(){
+    if(document.fullscreenElement){
+      if(document.exitFullscreen){
+        document.exitFullscreen();
+      }else if(document.webkitExitFullscreen){
+        document.webkitExitFullscreen();
       }
     }
-  },400)
-});
-
-// 关闭弹窗
-function closeVideoModal(){
-  if(document.fullscreenElement){
-    if(document.exitFullscreen){
-      document.exitFullscreen();
-    }else if(document.webkitExitFullscreen){
-      document.webkitExitFullscreen();
+    videoModal.classList.remove('open');
+    videoModalPlayer.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+  videoModalClose.onclick = closeVideoModal;
+  videoModal.onclick = function(e){
+    if(e.target === videoModal){
+      closeVideoModal();
     }
   }
-  videoModal.classList.remove('open');
-  videoModalPlayer.innerHTML = '';
-  document.body.style.overflow = '';
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeVideoModal();
+  })
 }
-
-videoModalClose.onclick = closeVideoModal;
-videoModal.onclick = function(e){
-  if(e.target === videoModal){
-    closeVideoModal();
-  }
-}
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') closeVideoModal();
-})
+</script>
+  </body>
+</html>
