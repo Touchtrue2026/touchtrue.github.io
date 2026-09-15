@@ -763,37 +763,38 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
   measure();
   requestAnimationFrame(frame);
 })();
-/* ===== 修改：点击视频卡片，弹窗打开后自动触发全屏 ===== */
+
+/* ===== 修复：事件委托，点击视频卡片弹出弹窗，弹窗打开自动进入全屏 ===== */
 const videoModal = document.getElementById('videoModal');
 const videoModalPlayer = document.getElementById('videoModalPlayer');
 const videoModalClose = document.getElementById('videoModalClose');
 
-// 绑定卡片点击事件
-document.querySelectorAll('.video-card').forEach(function(card){
-  card.addEventListener('click', function(){
-    const src = this.getAttribute('data-bv-src');
-    if(!src) return;
-    videoModalPlayer.innerHTML = `<iframe src="${src}&autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
-    videoModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
+// 使用事件委托绑定（放在body上，永远能捕获.video-card点击，解决绑定失效）
+document.body.addEventListener('click', function(e){
+  const card = e.target.closest('.video-card');
+  if(!card) return;
+  const src = card.getAttribute('data-bv-src');
+  if(!src) return;
 
-    // 等待iframe加载完成，触发modal-inner全屏
-    setTimeout(()=>{
-      const innerEl = document.querySelector('.video-modal-inner');
-      if (innerEl.requestFullscreen) {
-        innerEl.requestFullscreen();
-      } else if (innerEl.webkitRequestFullscreen) {
-        innerEl.webkitRequestFullscreen();
-      } else if (innerEl.msRequestFullscreen) {
-        innerEl.msRequestFullscreen();
-      }
-    },300)
-  })
+  videoModalPlayer.innerHTML = `<iframe src="${src}&autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
+  videoModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+
+  // 延时等待渲染完成，触发容器全屏
+  setTimeout(()=>{
+    const innerEl = document.querySelector('.video-modal-inner');
+    if (innerEl.requestFullscreen) {
+      innerEl.requestFullscreen();
+    } else if (innerEl.webkitRequestFullscreen) {
+      innerEl.webkitRequestFullscreen();
+    } else if (innerEl.msRequestFullscreen) {
+      innerEl.msRequestFullscreen();
+    }
+  },300)
 });
 
-// 关闭弹窗 + 退出全屏
+// 关闭弹窗函数（关闭同时退出全屏）
 function closeVideoModal(){
-  // 退出全屏
   if(document.exitFullscreen){
     document.exitFullscreen();
   }else if(document.webkitExitFullscreen){
@@ -805,6 +806,7 @@ function closeVideoModal(){
   videoModalPlayer.innerHTML = '';
   document.body.style.overflow = '';
 }
+
 videoModalClose.addEventListener('click', closeVideoModal);
 videoModal.addEventListener('click', function(e){
   if(e.target === videoModal) closeVideoModal();
