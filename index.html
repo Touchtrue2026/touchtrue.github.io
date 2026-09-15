@@ -763,8 +763,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
   measure();
   requestAnimationFrame(frame);
 })();
-
-/* ===== 修复：点击视频卡片弹窗播放（PC+手机端都可用） ===== */
+/* ===== 修改：点击视频卡片，弹窗打开后自动触发全屏 ===== */
 const videoModal = document.getElementById('videoModal');
 const videoModalPlayer = document.getElementById('videoModalPlayer');
 const videoModalClose = document.getElementById('videoModalClose');
@@ -777,11 +776,31 @@ document.querySelectorAll('.video-card').forEach(function(card){
     videoModalPlayer.innerHTML = `<iframe src="${src}&autoplay=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>`;
     videoModal.classList.add('open');
     document.body.style.overflow = 'hidden';
+
+    // 等待iframe加载完成，触发modal-inner全屏
+    setTimeout(()=>{
+      const innerEl = document.querySelector('.video-modal-inner');
+      if (innerEl.requestFullscreen) {
+        innerEl.requestFullscreen();
+      } else if (innerEl.webkitRequestFullscreen) {
+        innerEl.webkitRequestFullscreen();
+      } else if (innerEl.msRequestFullscreen) {
+        innerEl.msRequestFullscreen();
+      }
+    },300)
   })
 });
 
-// 关闭弹窗
+// 关闭弹窗 + 退出全屏
 function closeVideoModal(){
+  // 退出全屏
+  if(document.exitFullscreen){
+    document.exitFullscreen();
+  }else if(document.webkitExitFullscreen){
+    document.webkitExitFullscreen();
+  }else if(document.msExitFullscreen){
+    document.msExitFullscreen();
+  }
   videoModal.classList.remove('open');
   videoModalPlayer.innerHTML = '';
   document.body.style.overflow = '';
@@ -793,13 +812,3 @@ videoModal.addEventListener('click', function(e){
 document.addEventListener('keydown', function(e){
   if(e.key === 'Escape') closeVideoModal();
 });
-    </script>
-    <!--视频独立播放层：点击卡片后在此全屏播放-->
-    <div class="video-modal" id="videoModal">
-      <div class="video-modal-inner">
-        <button class="video-modal-close" id="videoModalClose">&times;</button>
-        <div class="video-modal-player" id="videoModalPlayer"></div>
-      </div>
-    </div>
-  </body>
-</html>
