@@ -13,12 +13,19 @@ body{
   color:#e8e8e8;
   line-height:1.7;
   background-color:transparent;
-  /* 下面这行是新增的背景图，请确保 assets/bg.jpg 存在 */
+  position:relative;
+  z-index:1;
+}
+/* 伪元素做背景层，解决移动端fixed失效 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
   background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("assets/bg.jpg");
   background-size:cover;
   background-position:center center;
   background-repeat:no-repeat;
-  background-attachment:fixed;
+  z-index:-1;
 }
 /*导航栏*/
 header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
