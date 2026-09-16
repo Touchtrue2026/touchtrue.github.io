@@ -23,12 +23,15 @@ body{
 body::before{
   content:"";
   position:fixed;
-  inset:0;
+  top:0;
+  left:0;
+  width:100vw;
+  height:100vh;
   background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("https://touchtrue2026.github.io/touchtrue.github.io/assets/bg.jpg");
   background-size:cover;
   background-position:center center;
   background-repeat:no-repeat;
-  z-index:-1;
+  z-index:-999;
 }
 /*导航栏*/
 header{position:fixed;width:100%;top:0;z-index:99;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;background-color:rgba(16,17,17,0.75)}
