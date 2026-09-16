@@ -163,7 +163,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
 .slide-track{
   display:flex;
   gap:16px;
-  touch-action:pan-y;
+  touch-action:pan-y pinch-zoom;
   cursor:grab;
 }
 .slide-track:active{cursor:grabbing}
@@ -737,7 +737,7 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
       </div>
     </div>
     <script>
-/* ===== 轮播：自动滚动 + 鼠标/触摸拖拽 + 左右箭头（无缝循环） ===== */
+/* ===== 轮播：自动滚动 + 鼠标/触摸拖拽 + 左右箭头（无缝循环）【修复手机不能拖动】 ===== */
 (function(){
   var track = document.getElementById('sliderTrack');
   if(!track) return;
@@ -745,7 +745,6 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
   var nextBtn = document.querySelector('.slide-btn.next-btn');
   var items = track.children;
   var N = items.length;
-           /* 24：12 张原图 + 复制 12 张做无缝循环 */
   var GAP = 16;
   var offset = 0;                  /* 负值，向左滚动 */
   var half = 0;                    /* 前 12 张总宽度 */
@@ -761,6 +760,11 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
     render();
     requestAnimationFrame(frame);
   }
+  function getClientX(e) {
+    // 兼容touch事件和pointer事件
+    if(e.touches && e.touches[0]) return e.touches[0].clientX;
+    return e.clientX;
+  }
   function down(x){ dragging = true; startX = x; startOffset = offset; }
   function move(x){
     if(!dragging) return;
@@ -769,13 +773,26 @@ footer{padding:40px;text-align:center;color:#888;font-size:14px;border-top:1px s
     if(offset > 0) offset -= half;
   }
   function up(){ dragging = false; }
+
+  // Pointer事件（桌面端）
   track.addEventListener('pointerdown', function(e){
-    down(e.clientX);
+    down(getClientX(e));
     try{ track.setPointerCapture(e.pointerId); }catch(err){}
   });
-  track.addEventListener('pointermove', function(e){ move(e.clientX); });
+  track.addEventListener('pointermove', function(e){ move(getClientX(e)); });
   track.addEventListener('pointerup', up);
   track.addEventListener('pointercancel', up);
+
+  // 新增：原生touch事件兜底，解决移动端无法拖动
+  track.addEventListener('touchstart',function(e){
+    down(getClientX(e));
+  },{passive:true});
+  track.addEventListener('touchmove',function(e){
+    move(getClientX(e));
+  },{passive:true});
+  track.addEventListener('touchend',up,{passive:true});
+  track.addEventListener('touchcancel',up,{passive:true});
+
   if(prevBtn) prevBtn.onclick = function(){ offset += stepW(); if(offset > 0) offset -= half; };
   if(nextBtn) nextBtn.onclick = function(){ offset -= stepW(); if(-offset >= half) offset += half; };
   window.addEventListener('resize', measure);
