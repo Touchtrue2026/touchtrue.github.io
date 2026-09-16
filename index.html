@@ -16,7 +16,14 @@ body{
   position:relative;
   z-index:1;
 }
-/* 伪元素做背景层，解决移动端fixed失效 */
+html{background:#101111}
+body{
+  color:#e8e8e8;
+  line-height:1.7;
+  background-color:transparent;
+  position:relative;
+  z-index:1;
+}
 body::before{
   content:"";
   position:fixed;
