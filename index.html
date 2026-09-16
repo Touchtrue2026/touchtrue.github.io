@@ -20,8 +20,9 @@ body{
   z-index:1;
   min-height:100%;
 }
+<div class="bg-layer"></div>
 body::before{
-  content:"";
+.bg-layer{
   position:fixed;
   top:0;
   left:0;
@@ -29,7 +30,7 @@ body::before{
   height:100vh;
   background-image:linear-gradient(rgba(16,17,17,.86),rgba(16,17,17,.86)),url("https://touchtrue2026.github.io/touchtrue.github.io/assets/bg.jpg");
   background-size:cover;
-  background-position:center center;
+  background-position:center;
   background-repeat:no-repeat;
   z-index:-999;
 }
